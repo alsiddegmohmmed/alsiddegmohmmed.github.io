@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowUpRight,
-  CheckCircle2,
-  Cpu,
+  BriefcaseBusiness,
+  Code2,
   Database,
   Github,
   Layers3,
@@ -10,525 +10,269 @@ import {
   Mail,
   MapPin,
   RadioTower,
-  Server,
   ShieldCheck,
   Workflow,
   Zap
 } from "lucide-react";
+import { capabilities, contact, projects, techSnapshot, timeline } from "./data";
 
-const contact = {
-  email: "siddegx@gmail.com",
-  phone: "+966 539 288 603",
-  linkedin: "https://www.linkedin.com/in/alsiddegmohmmed/",
-  github: "https://github.com/alsiddegmohmmed"
-};
+const capabilityIcons = [Layers3, Code2, RadioTower, ShieldCheck];
 
-const proofPoints = [
-  { value: "4+", label: "years building production software" },
-  { value: "10+", label: "projects delivered across web and enterprise systems" },
-  { value: "100+", label: "fuel stations targeted by SaaS architecture" },
-  { value: "20+", label: "SPL branches supported by IoT operations work" }
-];
+function HeroSystemDiagram() {
+  return (
+    <div className="hero-system" aria-label="Layered system illustration">
+      <div className="system-label label-top">Systems thinking. Measurable impact.</div>
+      <svg viewBox="0 0 620 500" role="img" aria-labelledby="hero-system-title">
+        <title id="hero-system-title">Layered architecture diagram showing data, application, service, and edge layers</title>
+        <defs>
+          <linearGradient id="layerFill" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stopColor="#ffffff" />
+            <stop offset="100%" stopColor="#e8eee9" />
+          </linearGradient>
+          <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="18" stdDeviation="18" floodColor="#0b1f1d" floodOpacity="0.14" />
+          </filter>
+        </defs>
 
-const aboutHighlights = [
-  "Architecting systems from zero, including technology decisions, API design, database models, and deployment plans.",
-  "Writing technical documentation and presenting solutions to enterprise stakeholders in the Saudi market.",
-  "Building Arabic-first and RTL-aware interfaces for teams and users who operate in the region every day."
-];
+        <g className="diagram-grid" opacity="0.45">
+          {Array.from({ length: 11 }).map((_, i) => (
+            <path key={`h-${i}`} d={`M80 ${80 + i * 28} L540 ${80 + i * 28}`} />
+          ))}
+          {Array.from({ length: 11 }).map((_, i) => (
+            <path key={`v-${i}`} d={`M120 ${48 + i * 28} L460 ${388 + i * 0}`} transform={`translate(${i * 18},0)`} />
+          ))}
+        </g>
 
-const caseStudies = [
-  {
-    title: "Petroleum Digital Operating System",
-    company: "Primus - Trading & Investment",
-    period: "Jul 2025 - Feb 2026",
-    domain: "Fuel governance · Multi-tenant SaaS · Edge computing",
-    icon: ShieldCheck,
-    summary:
-      "Designed and built a production-ready fuel governance platform architected for national-scale station operations, auditability, and offline authorization.",
-    outcomes: [
-      "Architected a multi-tenant SaaS platform for 100+ stations and presented it to enterprise clients including Al-Drees.",
-      "Designed an offline-first edge layer using industrial controllers so every fuel liter can be geo-tagged, authorized, and audit-logged without connectivity dependency.",
-      "Built loyalty and wallet capabilities with OTP auth, RFID/plate recognition integration, event sourcing, and AI-based anomaly detection."
-    ],
-    stack: ["Django 5", "PostgreSQL", "Redis", "React", "TypeScript", "Docker", "Event sourcing"]
-  },
-  {
-    title: "Real-Time Cash Management System",
-    company: "Primus - Trading & Investment",
-    period: "Jul 2025 - Feb 2026",
-    domain: "Fintech automation · WebSockets · Offline-first edge",
-    icon: Zap,
-    summary:
-      "Built a cash recycler platform connecting CDM machines, a cloud backend, mobile workflows, and a live operational dashboard.",
-    outcomes: [
-      "Engineered workflows to reduce daily reconciliation from 2+ hours to about 5 minutes by removing manual staff cash handling.",
-      "Built a WebSocket event pipeline via AWS API Gateway, designed for 5,000+ concurrent connections with EventBridge and Redis routing.",
-      "Designed the offline-first edge layer using SQLite and 4G LTE failover, built to store 10,000+ transactions locally with zero data loss."
-    ],
-    stack: ["Node.js", "AWS Lambda", "Aurora PostgreSQL", "React", "React Native", "WebSockets", "Redis", "EventBridge"]
-  },
-  {
-    title: "Hospital Information System",
-    company: "Sudan Army Hospital",
-    period: "2025 - 2026",
-    domain: "Healthcare · RBAC · Monitoring · Large-scale operations",
-    icon: Server,
-    summary:
-      "Architected and built a hospital management platform designed for thousands of users and hundreds of doctors, pending authority sign-off for deployment.",
-    outcomes: [
-      "Co-architected the system from scratch, covering database schema, API design, authentication model, and user-role flows.",
-      "Built the FastAPI backend with full RBAC/JWT auth and a Next.js 14 frontend with distinct UI paths by role.",
-      "Designed operational foundations with Redis, scheduled jobs, Dockerized services, and Prometheus/Grafana observability.",
-      "Balanced clinical workflow requirements with secure access control, maintainable APIs, and deployment readiness."
-    ],
-    stack: ["FastAPI", "Python 3.12", "PostgreSQL", "Next.js 14", "TypeScript", "Redis", "Prometheus/Grafana"]
-  },
-  {
-    title: "IoT Operations Platform",
-    company: "Inseejam · SPL",
-    period: "Nov 2024 - Jun 2025",
-    domain: "IoT · Telemetry · Multi-branch operations",
-    icon: RadioTower,
-    summary:
-      "Built a centralized IoT operations platform for branch managers to monitor devices, track energy, and automate controls.",
-    outcomes: [
-      "Built React and Next.js frontend architecture for real-time device status, scheduling controls, and branch-level operations.",
-      "Developed custom hooks such as useEdgeDevices and useSchedulerSettings to keep data fetching and UI behavior cleanly separated.",
-      "Integrated physical devices with ThingsBoard using Java and .NET services for telemetry ingestion and remote control.",
-      "Contributed to Node.js backend services and the WebSocket layer for live telemetry across 20+ SPL branches."
-    ],
-    stack: ["React", "Next.js", "TypeScript", "Redux", "Node.js", "WebSockets", "ThingsBoard"]
-  },
-  {
-    title: "Ecommerce & Admin Platforms",
-    company: "Dataline - Qatar",
-    period: "May 2024 - Aug 2024",
-    domain: "Commerce · Admin systems · API optimization",
-    icon: Layers3,
-    summary:
-      "Built admin dashboards and ecommerce platforms with modern full-stack JavaScript, performance-minded APIs, and maintainable data models.",
-    outcomes: [
-      "Delivered dashboards and commerce interfaces using React, Next.js, TypeScript, Node.js, and MongoDB.",
-      "Optimized APIs and database models for better responsiveness and maintainable operations.",
-      "Worked across product UI, backend integration, and client-facing delivery constraints."
-    ],
-    stack: ["React", "Next.js", "TypeScript", "Node.js", "MongoDB", "API design"]
+        <g className="layer layer-one" filter="url(#softShadow)">
+          <path d="M150 305 L310 250 L470 305 L310 370 Z" fill="url(#layerFill)" />
+          <path d="M150 305 L310 250 L470 305 L310 370 Z" />
+        </g>
+        <g className="layer layer-two">
+          <path d="M175 240 L310 195 L445 240 L310 295 Z" fill="#f8faf7" />
+          <path d="M175 240 L310 195 L445 240 L310 295 Z" />
+        </g>
+        <g className="layer layer-three">
+          <path d="M205 175 L310 142 L415 175 L310 218 Z" fill="#f1f5f0" />
+          <path d="M205 175 L310 142 L415 175 L310 218 Z" />
+        </g>
+
+        <g className="core-cube">
+          <path d="M272 160 L310 140 L348 160 L310 182 Z" />
+          <path d="M272 160 L310 182 L310 228 L272 205 Z" />
+          <path d="M348 160 L310 182 L310 228 L348 205 Z" />
+        </g>
+
+        <g className="data-paths">
+          <path d="M108 360 C178 330 205 318 272 205" />
+          <path d="M512 356 C442 320 410 298 348 205" />
+          <path d="M310 426 L310 228" />
+          <path d="M90 120 C180 92 260 94 310 140" />
+          <path d="M530 120 C445 92 360 94 310 140" />
+        </g>
+
+        <g className="nodes">
+          {[ [108,360], [512,356], [310,426], [90,120], [530,120], [210,282], [410,280], [310,100], [250,185], [372,190] ].map(([cx, cy], index) => (
+            <circle key={index} cx={cx} cy={cy} r={index < 5 ? 4.5 : 3.2} />
+          ))}
+        </g>
+
+        <g className="annotation left">
+          <path d="M72 170 L170 170" />
+          <text x="72" y="152">Data In</text>
+          <text x="72" y="188">Events · telemetry · transactions</text>
+        </g>
+        <g className="annotation right">
+          <path d="M450 170 L552 170" />
+          <text x="462" y="152">Operators</text>
+          <text x="462" y="188">Tools · insights · actions</text>
+        </g>
+        <g className="annotation bottom">
+          <path d="M390 425 L545 425" />
+          <text x="400" y="407">Outcomes</text>
+          <text x="400" y="443">Reliability · clarity · control</text>
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function ProjectVisual({ type }: { type: string }) {
+  if (type === "website") {
+    return (
+      <div className="project-visual website-visual">
+        <div className="mock-browser"><span /><span /><span /></div>
+        <div className="mock-sidebar" />
+        <div className="mock-main">
+          <div className="mock-line strong" />
+          <div className="mock-line" />
+          <div className="mock-grid">
+            <span /><span /><span /><span />
+          </div>
+        </div>
+      </div>
+    );
   }
-];
 
-const skills = [
-  {
-    title: "Frontend",
-    icon: Cpu,
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Redux", "Zustand", "RTL/Arabic UI"]
-  },
-  {
-    title: "Backend",
-    icon: Server,
-    items: ["Node.js", "NestJS", "Python", "Django", "FastAPI", "REST APIs", "tRPC", "JWT/RBAC"]
-  },
-  {
-    title: "Architecture",
-    icon: Workflow,
-    items: ["Multi-tenant SaaS", "Event-driven systems", "Offline-first", "Microservices", "Edge computing", "Technical documents"]
-  },
-  {
-    title: "Data",
-    icon: Database,
-    items: ["PostgreSQL", "Aurora", "MySQL", "MongoDB", "SQLite", "Redis"]
-  },
-  {
-    title: "Cloud & DevOps",
-    icon: ShieldCheck,
-    items: ["AWS Lambda", "API Gateway", "EventBridge", "S3", "CloudWatch", "Docker", "CI/CD"]
-  },
-  {
-    title: "Real-Time & IoT",
-    icon: RadioTower,
-    items: ["WebSockets", "ThingsBoard", "Telemetry", "IoT integration", "4G failover", "Remote control", "Java", "C# .NET"]
-  }
-];
-
-const builds = [
-  {
-    title: "Warehouse Management Dashboard",
-    category: "Operations dashboard",
-    image: "/images/Dark Blue Simple Dark Tech and  Bio-Link Warehouse.png",
-    href: "https://warehousemangement.vercel.app",
-    repo: "https://github.com/alsiddegmohmmed/material-kit-react",
-    stack: ["React", "TypeScript", "Firebase"]
-  },
-  {
-    title: "Ecommerce Admin",
-    category: "Commerce operations",
-    image: "/images/devias.png",
-    href: "https://material-dashboard-dusky.vercel.app/",
-    repo: "https://github.com/alsiddegmohmmed/ecommerce-admin",
-    stack: ["Next.js", "Node.js", "Dashboard"]
-  },
-  {
-    title: "AI Resume Builder",
-    category: "AI productivity",
-    image: "/images/Screenshot (195).png",
-    href: "https://github.com/alsiddegmohmmed/ai-resume-builder",
-    repo: "https://github.com/alsiddegmohmmed/ai-resume-builder",
-    stack: ["JavaScript", "Backend API", "Product"]
-  },
-  {
-    title: "Captivate Website",
-    category: "Product website",
-    image: "/images/captive.png",
-    href: "https://captivate-website.vercel.app/",
-    repo: "https://github.com/alsiddegmohmmed/captivate-website",
-    stack: ["Next.js", "TypeScript", "Tailwind"]
-  },
-  {
-    title: "Real Estate Experience",
-    category: "Frontend build",
-    image: "/images/preview.png",
-    href: "https://alsiddegmohmmed.github.io/Real-estate/",
-    repo: "https://github.com/alsiddegmohmmed/Real-estate",
-    stack: ["HTML", "CSS", "Responsive UI"]
-  },
-  {
-    title: "Sudan Go",
-    category: "Travel prototype",
-    image: "/images/Dark Blue Simple Dark Tech and Gaming Bio-Link Website.png",
-    href: "https://alsiddegmohmmed.github.io/SudanGo/",
-    repo: "https://github.com/alsiddegmohmmed/SudanGo",
-    stack: ["HTML", "CSS", "Product concept"]
-  }
-];
-
-const timeline = [
-  {
-    role: "Software Engineer / Solution Engineer",
-    company: "Primus - Trading & Investment",
-    period: "Jul 2025 - Feb 2026",
-    text: "Built enterprise software products across fintech, industrial automation, and healthcare from architecture planning through backend and frontend delivery."
-  },
-  {
-    role: "Full Stack Engineer",
-    company: "Inseejam",
-    period: "Nov 2024 - Jun 2025",
-    text: "Delivered IoT operations capabilities for SPL branches, including device integration, telemetry, WebSocket services, and dashboards."
-  },
-  {
-    role: "Full Stack Engineer",
-    company: "Dataline - Qatar",
-    period: "May 2024 - Aug 2024",
-    text: "Built ecommerce and admin platforms with React, Next.js, TypeScript, Node.js, and MongoDB."
-  },
-  {
-    role: "Full Stack Web Developer",
-    company: "Space, Modern Identity, Careerna, DAM, Mastermind-Tech",
-    period: "2021 - 2024",
-    text: "Delivered responsive websites, SEO improvements, and client projects across Saudi Arabia and Sudan."
-  }
-];
-
-const principles = [
-  "Architecture before code",
-  "Offline behavior is a product requirement",
-  "Operational visibility from day one",
-  "Arabic-first UX belongs in the system design"
-];
+  return (
+    <div className={`project-visual ${type}-visual`}>
+      <div className="diagram-node source">Source</div>
+      <div className="diagram-line" />
+      <div className="diagram-node core">{type === "fuel" ? "Reconcile" : type === "iot" ? "Gateway" : type === "hospital" ? "Workflow" : "Engine"}</div>
+      <div className="diagram-line" />
+      <div className="diagram-node output">Report</div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main id="top">
+      <aside className="side-index" aria-hidden="true">
+        <span>Casebook</span>
+        <a href="#top">01</a>
+        <a href="#work">02</a>
+        <a href="#capabilities">03</a>
+        <a href="#experience">04</a>
+        <a href="#contact">05</a>
+      </aside>
+
       <nav className="site-nav" aria-label="Primary navigation">
-        <a className="brand" href="#top" aria-label="Al Siddeg Omer home">
-          ASO
-        </a>
+        <Link href="#top" className="brand" aria-label="Al Siddeg Omer home">
+          <span>AS</span>
+          <div>
+            <strong>Al Siddeg Omer</strong>
+            <small>Software Engineer</small>
+          </div>
+        </Link>
         <div className="nav-links">
-          <a href="#about">About</a>
-          <a href="#case-studies">Case studies</a>
-          <a href="#skills">Skills</a>
-          <a href="#builds">Builds</a>
+          <a href="#work">Work</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
 
-      <section id="top" className="hero section-shell">
+      <section className="hero section-shell">
         <div className="hero-copy">
-          <p className="eyebrow">
-            <MapPin size={16} aria-hidden="true" />
-            Dammam, Saudi Arabia · Open to full-stack and frontend roles
-          </p>
-          <h1>Senior Full-Stack Engineer building enterprise software for real operational problems.</h1>
+          <p className="section-kicker">Systems Engineer · Builder · Problem Solver</p>
+          <h1>I build systems that solve real problems at scale.</h1>
+          <p className="hero-line">Systems thinking. <span>Measurable impact.</span></p>
           <p className="hero-lede">
-            From architecture to deployment, I own the full stack across fintech infrastructure, IoT platforms,
-            healthcare systems, SaaS products, and Arabic-first user experiences.
+            I build full-stack software across frontend, backend, real-time workflows, and cloud-connected platforms for industries where reliability matters.
           </p>
-          <div className="hero-actions" aria-label="Primary actions">
-            <a className="button primary" href="#case-studies">
-              View my work
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-            <a className="button secondary" href={`mailto:${contact.email}`}>
-              <Mail size={18} aria-hidden="true" />
-              Contact me
-            </a>
-            <a className="button secondary" href={contact.linkedin} target="_blank" rel="noreferrer">
-              <Linkedin size={18} aria-hidden="true" />
-              LinkedIn
-            </a>
-            <a className="icon-button" href={contact.github} target="_blank" rel="noreferrer" aria-label="GitHub profile">
-              <Github size={20} aria-hidden="true" />
-            </a>
+          <div className="hero-actions">
+            <a className="button primary" href="#work">Explore my work <ArrowUpRight size={16} /></a>
+            <a className="button secondary" href="#experience">View experience</a>
           </div>
-          <div className="stack-strip" aria-label="Core technologies">
-            {["React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", "AWS", "Arabic/RTL", "Docker"].map((item) => (
-              <span key={item}>{item}</span>
-            ))}
+          <div className="hero-meta" aria-label="Availability and location">
+            <div><span>Based in</span><strong>{contact.location}</strong></div>
+            <div><span>Available for</span><strong>Full-time opportunities</strong></div>
           </div>
         </div>
-
-        <div className="hero-visual" aria-label="Enterprise systems architecture snapshot">
-          <div className="system-panel">
-            <div className="system-panel-header">
-              <span>Enterprise System Map</span>
-              <span>Live-ready architecture</span>
-            </div>
-            <div className="system-grid">
-              {[
-                ["Edge", "Offline controllers · SQLite · 4G failover"],
-                ["Cloud", "AWS Lambda · API Gateway · EventBridge"],
-                ["Backend", "Django · FastAPI · NestJS · RBAC"],
-                ["Data", "PostgreSQL · Aurora · Redis · audit logs"]
-              ].map(([title, text]) => (
-                <div className="system-node" key={title}>
-                  <strong>{title}</strong>
-                  <span>{text}</span>
-                </div>
-              ))}
-            </div>
-            <div className="signal-row" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-        </div>
+        <HeroSystemDiagram />
       </section>
 
-      <section className="proof section-shell" aria-labelledby="proof-heading">
-        <div>
-          <p className="section-kicker">Career signal</p>
-          <h2 id="proof-heading">Systems with real operational constraints.</h2>
+      <section id="work" className="section-shell work-section">
+        <div className="section-heading split">
+          <div>
+            <p className="section-kicker">Selected Work</p>
+            <h2>Public websites first. Systems depth next.</h2>
+          </div>
+          <p className="section-note">Confidential projects use representative diagrams and workflow maps instead of client screenshots.</p>
         </div>
-        <div className="proof-grid">
-          {proofPoints.map((point) => (
-            <div className="proof-card" key={point.label}>
-              <strong>{point.value}</strong>
-              <span>{point.label}</span>
-            </div>
+
+        <div className="project-grid">
+          {projects.map((project) => (
+            <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug}>
+              <div className="project-card-top">
+                <span>{project.order}</span>
+                <em>{project.status}</em>
+              </div>
+              <h3>{project.title}</h3>
+              <p className="project-subtitle">{project.subtitle}</p>
+              <ProjectVisual type={project.visual} />
+              <p>{project.summary}</p>
+              <div className="tag-row">
+                {project.stack.slice(0, 3).map((tech) => <span key={tech}>{tech}</span>)}
+              </div>
+              <div className="project-link">View case study <ArrowUpRight size={14} /></div>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section id="about" className="about-section section-shell section-block" aria-labelledby="about-heading">
-        <div className="section-heading compact">
-          <p className="section-kicker">About</p>
-          <h2 id="about-heading">I build systems, not just features.</h2>
-        </div>
-        <div className="about-grid">
-          <div className="about-copy">
-            <p>
-              I&apos;m Siddeg Omer, a Full Stack Engineer with 4+ years of experience building enterprise-grade
-              software in Saudi Arabia. My work spans IoT platforms, fintech systems, healthcare infrastructure,
-              industrial automation, ecommerce, and SaaS products.
-            </p>
-            <p>
-              What makes my background different is the scope of what I&apos;ve worked on. I don&apos;t only build UI
-              or API tickets; I help shape architecture, plan implementation, document technical decisions, and
-              present solutions to enterprise clients.
-            </p>
-          </div>
-          <div className="about-list">
-            {aboutHighlights.map((item) => (
-              <div key={item}>
-                <CheckCircle2 size={18} aria-hidden="true" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="case-studies" className="section-shell section-block" aria-labelledby="case-heading">
+      <section id="capabilities" className="section-shell capability-section">
         <div className="section-heading">
-          <p className="section-kicker">Featured case studies</p>
-          <h2 id="case-heading">Architecture, delivery, and technical ownership.</h2>
-          <p>
-            These projects are written at the system level because the value was in planning, integration, reliability,
-            and production readiness, not just screens. Client codebases are private, so the emphasis is on role,
-            system design, and technical decisions.
-          </p>
+          <p className="section-kicker">Capabilities</p>
+          <h2>Engineering across product, data, and operations.</h2>
         </div>
-
-        <div className="case-grid">
-          {caseStudies.map((study) => {
-            const Icon = study.icon;
+        <div className="capability-grid">
+          {capabilities.map((capability, index) => {
+            const Icon = capabilityIcons[index] ?? Workflow;
             return (
-              <article className="case-card" key={study.title}>
-                <div className="case-topline">
-                  <div className="case-icon">
-                    <Icon size={22} aria-hidden="true" />
-                  </div>
-                  <div>
-                    <span>{study.period}</span>
-                    <strong>{study.company}</strong>
-                  </div>
-                </div>
-                <p className="case-domain">{study.domain}</p>
-                <h3>{study.title}</h3>
-                <p>{study.summary}</p>
+              <article className="capability-card" key={capability.title}>
+                <Icon size={24} />
+                <h3>{capability.title}</h3>
+                <p>{capability.text}</p>
                 <ul>
-                  {study.outcomes.map((outcome) => (
-                    <li key={outcome}>
-                      <CheckCircle2 size={17} aria-hidden="true" />
-                      <span>{outcome}</span>
-                    </li>
-                  ))}
+                  {capability.points.map((point) => <li key={point}>{point}</li>)}
                 </ul>
-                <div className="tag-row">
-                  {study.stack.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
               </article>
             );
           })}
         </div>
-      </section>
-
-      <section id="skills" className="section-shell section-block" aria-labelledby="skills-heading">
-        <div className="section-heading compact">
-          <p className="section-kicker">Technical range</p>
-          <h2 id="skills-heading">Full-stack depth from interface to edge.</h2>
-        </div>
-        <div className="skills-grid">
-          {skills.map((group) => {
-            const Icon = group.icon;
-            return (
-              <article className="skill-card" key={group.title}>
-                <div className="skill-title">
-                  <Icon size={20} aria-hidden="true" />
-                  <h3>{group.title}</h3>
-                </div>
-                <div className="skill-list">
-                  {group.items.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
-              </article>
-            );
-          })}
+        <div className="tech-panel">
+          <div>
+            <p className="section-kicker">Tech Snapshot</p>
+            <h3>Tools I use to ship production systems.</h3>
+          </div>
+          <div className="tech-list">
+            {techSnapshot.map((tech) => <span key={tech}>{tech}</span>)}
+          </div>
         </div>
       </section>
 
-      <section className="section-shell section-block split-section" aria-labelledby="principles-heading">
-        <div>
-          <p className="section-kicker">How I work</p>
-          <h2 id="principles-heading">Senior engineering is making systems understandable before they become expensive.</h2>
-        </div>
-        <div className="principles-list">
-          {principles.map((principle) => (
-            <div key={principle}>
-              <CheckCircle2 size={18} aria-hidden="true" />
-              <span>{principle}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="builds" className="section-shell section-block" aria-labelledby="builds-heading">
-        <div className="section-heading">
-          <p className="section-kicker">Selected builds</p>
-          <h2 id="builds-heading">Public work and product-facing execution.</h2>
-          <p>
-            A curated selection from GitHub and deployed work. The case studies above carry the senior engineering story;
-            these builds show range, polish, and consistency across product-facing delivery.
-          </p>
-        </div>
-        <div className="build-grid">
-          {builds.map((build) => (
-            <article className="build-card" key={build.title}>
-              <a className="build-image" href={build.href} target="_blank" rel="noreferrer" aria-label={`Open ${build.title}`}>
-                <Image src={build.image} alt={`${build.title} screenshot`} fill sizes="(max-width: 768px) 100vw, 33vw" />
-              </a>
-              <div className="build-body">
-                <p>{build.category}</p>
-                <h3>{build.title}</h3>
-                <div className="tag-row">
-                  {build.stack.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
-                <div className="build-links">
-                  <a href={build.href} target="_blank" rel="noreferrer">
-                    Live
-                    <ArrowUpRight size={16} aria-hidden="true" />
-                  </a>
-                  <a href={build.repo} target="_blank" rel="noreferrer">
-                    Code
-                    <ArrowUpRight size={16} aria-hidden="true" />
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section-shell section-block" aria-labelledby="experience-heading">
-        <div className="section-heading compact">
-          <p className="section-kicker">Experience</p>
-          <h2 id="experience-heading">From client delivery to enterprise platforms.</h2>
+      <section id="experience" className="section-shell experience-section">
+        <div className="section-heading split">
+          <div>
+            <p className="section-kicker">Experience Timeline</p>
+            <h2>From client websites to enterprise systems.</h2>
+          </div>
+          <a className="text-link" href={`mailto:${contact.email}`}>Request CV <ArrowUpRight size={14} /></a>
         </div>
         <div className="timeline">
           {timeline.map((item) => (
             <article className="timeline-item" key={`${item.company}-${item.period}`}>
-              <span>{item.period}</span>
-              <div>
-                <h3>{item.role}</h3>
-                <strong>{item.company}</strong>
-                <p>{item.text}</p>
-              </div>
+              <span className="timeline-dot" />
+              <p>{item.period}</p>
+              <h3>{item.company}</h3>
+              <strong>{item.role}</strong>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section id="contact" className="contact-section section-shell" aria-labelledby="contact-heading">
+      <section id="contact" className="section-shell contact-section">
         <div>
-          <p className="section-kicker">Let’s talk</p>
-          <h2 id="contact-heading">I’m ready for senior full-stack roles where architecture and delivery both matter.</h2>
-          <p>
-            Best fit: full-stack, frontend, product, IoT, SaaS, fintech automation, healthcare software, and operational
-            dashboard teams building for real users in Saudi Arabia and the wider region.
-          </p>
+          <p className="section-kicker">Contact</p>
+          <h2>Let’s build systems that solve real problems.</h2>
+          <p>Open to software engineering opportunities where full-stack execution, reliability, and product thinking matter.</p>
         </div>
-        <div className="contact-actions">
-          <a className="button primary" href={`mailto:${contact.email}`}>
-            <Mail size={18} aria-hidden="true" />
-            {contact.email}
-          </a>
-          <a className="button secondary" href={contact.linkedin} target="_blank" rel="noreferrer">
-            <Linkedin size={18} aria-hidden="true" />
-            LinkedIn profile
-          </a>
-          <a className="button ghost" href={`tel:${contact.phone.replace(/\s/g, "")}`}>
-            {contact.phone}
-          </a>
-          <a className="button ghost" href={contact.github} target="_blank" rel="noreferrer">
-            <Github size={18} aria-hidden="true" />
-            GitHub profile
-          </a>
+        <div className="contact-details">
+          <a href={`mailto:${contact.email}`}><Mail size={16} /> {contact.email}</a>
+          <a href={contact.linkedin} target="_blank" rel="noreferrer"><Linkedin size={16} /> LinkedIn</a>
+          <a href={contact.github} target="_blank" rel="noreferrer"><Github size={16} /> GitHub</a>
+          <span><MapPin size={16} /> {contact.location}</span>
         </div>
+        <a className="button light" href={`mailto:${contact.email}`}>Start a conversation <ArrowUpRight size={16} /></a>
       </section>
+
+      <footer className="site-footer section-shell">
+        <span>© 2026 Al Siddeg Omer</span>
+        <span>Built with Next.js</span>
+        <span>System thinking. Measurable impact.</span>
+      </footer>
     </main>
   );
 }
