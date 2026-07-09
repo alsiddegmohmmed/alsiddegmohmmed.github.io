@@ -1,7 +1,7 @@
 const items = [
   ["01", "Overview", "#top"],
-  ["02", "Selected Work", "#work"],
-  ["03", "Capabilities", "#capabilities"],
+  ["02", "Capabilities", "#capabilities"],
+  ["03", "Selected Work", "#work"],
   ["04", "Experience", "#experience"],
   ["05", "Contact", "#contact"]
 ];
