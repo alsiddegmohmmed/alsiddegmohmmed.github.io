@@ -21,7 +21,7 @@ export function ExperienceTimeline() {
             <span className="absolute left-1 top-7 h-3 w-3 rounded-full border-2 border-surface bg-green shadow-[0_0_0_1px_var(--green)]" aria-hidden="true" />
             <p className="m-0 font-mono text-xs font-extrabold uppercase text-copper">{item.period}</p>
             <div>
-              <h3 className="font-display text-2xl font-semibold leading-tight text-ink">{item.company}</h3> . <strong className="mt-2 block text-green">{item.role}</strong>
+              <h3 className="font-display text-2xl font-semibold leading-tight text-ink">{item.company}</h3>
               <strong className="mt-2 block text-green">{item.role}</strong>
               <p className="mt-3 leading-7 text-muted">{item.text}</p>
             </div>
