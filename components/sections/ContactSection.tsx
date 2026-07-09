@@ -3,7 +3,7 @@ import { contact } from "@/app/data";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="mx-auto my-14 grid w-[min(1180px,calc(100%_-_44px))] gap-8 rounded border border-surface/15 bg-green p-7 text-surface md:p-12 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.8fr)] lg:items-center">
+    <section id="contact" className="mx-auto my-14 grid w-[min(1180px,calc(100%_-_44px))] scroll-mt-28 gap-8 rounded border border-surface/15 bg-green p-7 text-surface md:p-12 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.8fr)] lg:items-center">
       <div>
         <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-[#b9d5c6]">Contact</p>
         <h2 className="font-display text-[clamp(2rem,4vw,3.35rem)] font-semibold leading-none text-surface">

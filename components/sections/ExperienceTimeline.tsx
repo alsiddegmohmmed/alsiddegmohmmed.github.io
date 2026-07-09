@@ -3,7 +3,7 @@ import { contact, timeline } from "@/app/data";
 
 export function ExperienceTimeline() {
   return (
-    <section id="experience" className="mx-auto w-[min(1180px,calc(100%_-_44px))] border-t border-line py-20" aria-labelledby="experience-title">
+    <section id="experience" className="mx-auto w-[min(1180px,calc(100%_-_44px))] scroll-mt-28 border-t border-line py-20" aria-labelledby="experience-title">
       <div className="mb-8 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.55fr)] lg:items-end">
         <div>
           <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">Experience Timeline</p>

@@ -5,7 +5,7 @@ const icons = [Layers3, Code2, RadioTower, ShieldCheck];
 
 export function Capabilities() {
   return (
-    <section id="capabilities" className="mx-auto w-[min(1180px,calc(100%_-_44px))] border-t border-line py-20" aria-labelledby="capabilities-title">
+    <section id="capabilities" className="mx-auto w-[min(1180px,calc(100%_-_44px))] scroll-mt-28 border-t border-line py-20" aria-labelledby="capabilities-title">
       <div className="mb-8 max-w-3xl">
         <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">Capabilities</p>
         <h2 id="capabilities-title" className="font-display text-[clamp(2rem,4vw,3.35rem)] font-semibold leading-none text-ink">
