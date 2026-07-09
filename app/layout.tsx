@@ -1,34 +1,32 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alsiddegmohmmed.vercel.app"),
-  title: "Al Siddeg Omer | Senior Full-Stack Software Engineer",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Al Siddeg Omer | Software Engineer",
+    template: "%s | Al Siddeg Omer"
+  },
   description:
-    "Senior full-stack engineer in Dammam, Saudi Arabia building enterprise software across fintech infrastructure, IoT platforms, healthcare systems, SaaS products, and Arabic-first UX.",
+    "Software engineer building full-stack, real-time, and operational software across IoT, fintech, healthcare, fuel operations, and public web platforms.",
+  alternates: {
+    canonical: "/"
+  },
   openGraph: {
-    title: "Al Siddeg Omer | Senior Full-Stack Software Engineer",
+    title: "Al Siddeg Omer | Software Engineer",
     description:
-      "Enterprise software across fintech infrastructure, IoT platforms, healthcare systems, SaaS products, and Arabic-first UX.",
-    url: "https://alsiddegmohmmed.vercel.app",
+      "Software engineer building full-stack, real-time, and operational software across IoT, fintech, healthcare, fuel operations, and public web platforms.",
+    url: siteUrl,
     siteName: "Al Siddeg Omer Portfolio",
-    images: [
-      {
-        url: "/images/bg.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Al Siddeg Omer software engineering portfolio"
-      }
-    ],
     locale: "en_US",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Al Siddeg Omer | Senior Full-Stack Software Engineer",
+    title: "Al Siddeg Omer | Software Engineer",
     description:
-      "Enterprise software across fintech infrastructure, IoT platforms, healthcare systems, SaaS products, and Arabic-first UX.",
-    images: ["/images/bg.jpg"]
+      "Software engineer building full-stack, real-time, and operational software across IoT, fintech, healthcare, fuel operations, and public web platforms."
   }
 };
 

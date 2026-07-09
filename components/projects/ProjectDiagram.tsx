@@ -1,0 +1,98 @@
+import Image from "next/image";
+import type { Project } from "@/app/data";
+
+const diagramCopy: Record<Project["visual"], { title: string; nodes: string[] }> = {
+  website: {
+    title: "Public website structure",
+    nodes: ["Public pages", "Reusable sections", "Responsive UI", "Live website"]
+  },
+  fuel: {
+    title: "Fuel custody workflow",
+    nodes: ["Field devices", "Ingestion", "Reconciliation", "Reports"]
+  },
+  iot: {
+    title: "IoT operations map",
+    nodes: ["Devices", "ThingsBoard", "APIs", "Dashboards"]
+  },
+  hospital: {
+    title: "Healthcare role flow",
+    nodes: ["Registration", "Clinical work", "Pharmacy / billing", "Admin"]
+  },
+  cash: {
+    title: "Cash edge-to-cloud flow",
+    nodes: ["POS / CDM", "Edge gateway", "Cloud events", "Live dashboard"]
+  }
+};
+
+export function ProjectDiagram({ project, compact = false }: { project: Project; compact?: boolean }) {
+  const copy = diagramCopy[project.visual];
+  const title = `${copy.title} for ${project.title}`;
+  const websiteImage =
+    project.slug === "expand-amnads"
+      ? { src: "/assets/expand.png", alt: "Expand / AmnAds public website screenshot" }
+      : project.slug === "primus-website"
+        ? { src: "/assets/primus.png", alt: "Primus Trading & Investment public website screenshot" }
+        : null;
+
+  if (project.visual === "website" && websiteImage) {
+    return (
+      <figure className="my-4 overflow-hidden border border-line bg-surface-muted p-3">
+        <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase text-green">{copy.title}</figcaption>
+        <div className="overflow-hidden border border-line bg-surface">
+          <Image
+            src={websiteImage.src}
+            alt={websiteImage.alt}
+            width={1400}
+            height={900}
+            className="h-auto w-full object-cover"
+            sizes="(min-width: 1024px) 33vw, 100vw"
+          />
+        </div>
+      </figure>
+    );
+  }
+
+  return (
+    <figure className="my-4 border border-line bg-surface-muted p-3">
+      <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase text-green">{copy.title}</figcaption>
+      <svg className="block overflow-visible" viewBox="0 0 760 360" role="img" aria-labelledby={`${project.slug}-diagram-title`} focusable="false">
+        <title id={`${project.slug}-diagram-title`}>{title}</title>
+        <defs>
+          <marker id={`${project.slug}-arrow`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0 0 10 5 0 10Z" fill="var(--blueprint)" />
+          </marker>
+        </defs>
+        <path d="M42 74H718V286H42Z" fill="rgba(255,253,248,0.72)" stroke="var(--line)" />
+        <path d="M42 144H718M42 214H718M196 74V286M380 74V286M564 74V286" fill="none" stroke="rgba(13,27,30,0.08)" />
+        {copy.nodes.map((node, index) => {
+          const x = 74 + index * 174;
+          const y = index % 2 === 0 ? 122 : 176;
+
+          return (
+            <g key={node}>
+              <rect x={x} y={y} width="132" height="76" rx="4" fill="var(--surface)" stroke="var(--line-strong)" />
+              <text x={x + 18} y={y + 34} fill="var(--muted)" fontFamily="var(--font-mono)" fontSize="13" fontWeight="700">
+                {node}
+              </text>
+              <circle cx={x + 112} cy={y + 56} r="4" fill="var(--green)" />
+              {index < copy.nodes.length - 1 ? (
+                <path
+                  d={`M${x + 132} ${y + 38} C${x + 166} ${y + 38} ${x + 140} ${index % 2 === 0 ? 214 : 160} ${x + 174} ${index % 2 === 0 ? 214 : 160}`}
+                  fill="none"
+                  stroke="var(--blueprint)"
+                  strokeWidth="1.6"
+                  markerEnd={`url(#${project.slug}-arrow)`}
+                />
+              ) : null}
+            </g>
+          );
+        })}
+        {!compact ? (
+          <text x="52" y="326" fill="var(--muted)" fontFamily="var(--font-mono)" fontSize="13" fontWeight="700">
+            Representative architecture map. No client-sensitive screens or proprietary data.
+          </text>
+        ) : null}
+      </svg>
+    </figure>
+  );
+}
