@@ -272,7 +272,7 @@ export const timeline = [
   },
   {
     period: "May 2024 — Aug 2024",
-    company: "Dateline",
+    company: "Dataline",
     role: "Full Stack Engineer",
     text: "Built full-stack web applications including admin dashboards and ecommerce platforms using React, Node.js, Next.js, TypeScript, and MongoDB."
   },

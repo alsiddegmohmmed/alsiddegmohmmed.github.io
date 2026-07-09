@@ -6,18 +6,24 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "Inter", "system-ui", "sans-serif"]
+        display: ["var(--font-display)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "SFMono-Regular", "monospace"]
       },
       colors: {
-        ink: "#08111f",
-        panel: "#101a2b",
-        mist: "#eef4f8",
-        signal: "#26c6da",
-        copper: "#d58a4a",
-        moss: "#6fa678"
+        bg: "var(--bg)",
+        surface: "var(--surface)",
+        "surface-muted": "var(--surface-muted)",
+        ink: "var(--ink)",
+        muted: "var(--muted)",
+        line: "var(--line)",
+        "line-strong": "var(--line-strong)",
+        green: "var(--green)",
+        "green-soft": "var(--green-soft)",
+        blueprint: "var(--blueprint)",
+        copper: "var(--copper)"
       },
       boxShadow: {
-        lift: "0 24px 80px rgba(8, 17, 31, 0.18)"
+        lift: "0 24px 80px var(--shadow)"
       }
     }
   },
