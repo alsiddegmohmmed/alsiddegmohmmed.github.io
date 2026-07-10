@@ -11,14 +11,14 @@ export function ExperienceTimeline() {
             From client websites to enterprise systems.
           </h2>
         </div>
-        <a className="inline-flex items-center gap-2 font-extrabold text-green" href={`mailto:${contact.email}`}>
-          Request CV <ArrowUpRight size={14} aria-hidden="true" />
+        <a className="motion-text-link group inline-flex items-center gap-2 font-extrabold text-green" href={`mailto:${contact.email}`}>
+          Request CV <ArrowUpRight className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" size={14} aria-hidden="true" />
         </a>
       </div>
       <div className="relative grid gap-3 before:absolute before:bottom-5 before:left-2 before:top-5 before:w-px before:bg-line-strong">
         {timeline.map((item) => (
-          <article className="relative grid gap-4 border border-line bg-surface/80 py-5 pl-9 pr-5 md:grid-cols-[170px_1fr]" key={`${item.company}-${item.period}`}>
-            <span className="absolute left-1 top-7 h-3 w-3 rounded-full border-2 border-surface bg-green shadow-[0_0_0_1px_var(--green)]" aria-hidden="true" />
+          <article className="motion-panel group relative grid gap-4 border border-line bg-surface/80 py-5 pl-9 pr-5 md:grid-cols-[170px_1fr]" key={`${item.company}-${item.period}`}>
+            <span className="absolute left-1 top-7 h-3 w-3 rounded-full border-2 border-surface bg-green shadow-[0_0_0_1px_var(--green)] transition-transform duration-200 group-hover:scale-125" aria-hidden="true" />
             <p className="m-0 font-mono text-xs font-extrabold uppercase text-copper">{item.period}</p>
             <div>
               <h3 className="font-display text-2xl font-semibold leading-tight text-ink">{item.company}</h3>

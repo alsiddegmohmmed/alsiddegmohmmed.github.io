@@ -16,8 +16,8 @@ export function Capabilities() {
         {capabilities.map((capability, index) => {
           const Icon = icons[index] ?? Database;
           return (
-            <article className="grid content-start gap-3 border border-line bg-surface/80 p-5" key={capability.title}>
-              <Icon className="text-green" size={22} aria-hidden="true" />
+            <article className="motion-panel group grid content-start gap-3 border border-line bg-surface/80 p-5" key={capability.title}>
+              <Icon className="text-green transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:scale-105" size={22} aria-hidden="true" />
               <h3 className="font-display text-2xl font-semibold leading-tight text-ink">{capability.title}</h3>
               <p className="m-0 leading-7 text-muted">{capability.text}</p>
               <ul className="grid gap-2 p-0">
@@ -31,14 +31,14 @@ export function Capabilities() {
           );
         })}
       </div>
-      <div className="mt-5 grid gap-6 border border-line bg-green-soft p-6 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
+      <div className="motion-panel mt-5 grid gap-6 border border-line bg-green-soft p-6 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
         <div>
           <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">Tech Snapshot</p>
           <h3 className="font-display text-3xl font-semibold leading-tight text-ink">Tools used to ship production systems.</h3>
         </div>
         <div className="flex flex-wrap gap-2">
           {techSnapshot.map((tech) => (
-            <span className="inline-flex min-h-7 items-center rounded-full border border-line bg-surface px-3 font-mono text-[11px] font-extrabold text-muted" key={tech}>
+            <span className="motion-chip inline-flex min-h-7 items-center rounded-full border border-line bg-surface px-3 font-mono text-[11px] font-extrabold text-muted" key={tech}>
               {tech}
             </span>
           ))}

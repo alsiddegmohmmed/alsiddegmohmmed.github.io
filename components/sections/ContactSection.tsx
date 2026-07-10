@@ -14,22 +14,22 @@ export function ContactSection() {
         </p>
       </div>
       <div className="grid gap-2" aria-label="Contact methods">
-        <a className="inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface" href={`mailto:${contact.email}`}>
+        <a className="contact-link inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface" href={`mailto:${contact.email}`}>
           <Mail size={16} aria-hidden="true" /> {contact.email}
         </a>
-        <a className="inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface" href={`tel:${contact.phone.replace(/\s+/g, "")}`}>
+        <a className="contact-link inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface" href={`tel:${contact.phone.replace(/\s+/g, "")}`}>
           <Phone size={16} aria-hidden="true" /> {contact.phone}
         </a>
-        <a className="inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface" href={contact.linkedin} target="_blank" rel="noreferrer">
+        <a className="contact-link inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface" href={contact.linkedin} target="_blank" rel="noreferrer">
           <Linkedin size={16} aria-hidden="true" /> LinkedIn
         </a>
-        <a className="inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface" href={contact.github} target="_blank" rel="noreferrer">
+        <a className="contact-link inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface" href={contact.github} target="_blank" rel="noreferrer">
           <Github size={16} aria-hidden="true" /> GitHub
         </a>
         <span className="inline-flex min-h-11 items-center gap-3 border border-surface/20 px-3 py-2 text-surface">
           <MapPin size={16} aria-hidden="true" /> {contact.location}
         </span>
-        <a className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded border border-surface bg-surface px-5 text-sm font-extrabold text-green" href={`mailto:${contact.email}`}>
+        <a className="contact-cta group mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded border border-surface bg-surface px-5 text-sm font-extrabold text-green" href={`mailto:${contact.email}`}>
           Start a conversation <ArrowUpRight size={16} aria-hidden="true" />
         </a>
       </div>

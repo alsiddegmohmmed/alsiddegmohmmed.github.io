@@ -5,7 +5,7 @@ import { ProjectDiagram } from "@/components/projects/ProjectDiagram";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group min-h-full rounded border border-line bg-surface/90 transition hover:-translate-y-1 hover:border-green hover:bg-surface focus-within:-translate-y-1 focus-within:border-green">
+    <article className="motion-panel group min-h-full rounded border border-line bg-surface/90">
       <Link className="grid min-h-full grid-rows-[auto_auto_1fr] p-4" href={`/projects/${project.slug}`} aria-label={`View ${project.title} case study`}>
         <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] font-extrabold uppercase text-muted">
           <span className="text-green">{project.order}</span>
@@ -21,7 +21,7 @@ export function ProjectCard({ project }: { project: Project }) {
           <p className="m-0 leading-7 text-muted">{project.cardSummary}</p>
           <div className="flex flex-wrap gap-2">
             {project.stack.slice(0, 3).map((tech) => (
-              <span className="inline-flex min-h-7 items-center rounded-full border border-line bg-surface px-3 font-mono text-[11px] font-extrabold text-muted" key={tech}>
+              <span className="motion-chip inline-flex min-h-7 items-center rounded-full border border-line bg-surface px-3 font-mono text-[11px] font-extrabold text-muted" key={tech}>
                 {tech}
               </span>
             ))}
