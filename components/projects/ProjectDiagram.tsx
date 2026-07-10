@@ -11,72 +11,109 @@ const diagramCopy: Record<Project["visual"], { title: string; nodes: string[] }>
     nodes: ["Field devices", "Ingestion", "Reconciliation", "Reports"]
   },
   iot: {
-    title: "IoT operations map",
+    title: "Confidential IoT system visual",
     nodes: ["Devices", "ThingsBoard", "APIs", "Dashboards"]
   },
   hospital: {
-    title: "Healthcare role flow",
+    title: "Confidential healthcare system visual",
     nodes: ["Registration", "Clinical work", "Pharmacy / billing", "Admin"]
   },
   cash: {
-    title: "Cash edge-to-cloud flow",
+    title: "Confidential cash system visual",
     nodes: ["POS / CDM", "Edge gateway", "Cloud events", "Live dashboard"]
   }
 };
 
-export function ProjectDiagram({ project, compact = false }: { project: Project; compact?: boolean }) {
+type ProjectImage = {
+  src: string;
+  alt: string;
+  position?: string;
+};
+
+const projectImages: Partial<Record<Project["visual"], ProjectImage>> = {
+  fuel: {
+    src: "/assets/fuel-custody-card.png",
+    alt: "Representative blueprint-style visual for the Fuel Custody and Reconciliation Platform",
+    position: "center"
+  },
+  iot: {
+    src: "/assets/inseejam-iot-card.png",
+    alt: "Representative blueprint-style visual for the Inseejam IoT Operations Platform",
+    position: "center"
+  },
+  hospital: {
+    src: "/assets/hospital-operations-card.png",
+    alt: "Representative blueprint-style visual for the Hospital Operations Platform",
+    position: "center"
+  },
+  cash: {
+    src: "/assets/cash-operations-card.png",
+    alt: "Representative blueprint-style visual for the Real-Time Cash Management System",
+    position: "center"
+  }
+};
+
+export function ProjectDiagram({
+  project,
+  compact = false
+}: {
+  project: Project;
+  compact?: boolean;
+}) {
   const copy = diagramCopy[project.visual];
   const title = `${copy.title} for ${project.title}`;
 
   const websiteImage =
     project.slug === "expand-amnads"
-      ? { src: "/assets/expand.png", alt: "Expand / AmnAds public website screenshot" }
+      ? {
+          src: "/assets/expand.png",
+          alt: "Expand / AmnAds public website screenshot"
+        }
       : project.slug === "primus-website"
-        ? { src: "/assets/primus.png", alt: "Primus Trading & Investment public website screenshot" }
+        ? {
+            src: "/assets/primus.png",
+            alt: "Primus Trading & Investment public website screenshot"
+          }
         : null;
 
-  const fuelImage =
-    project.visual === "fuel"
-      ? {
-          src: "/assets/fuel-custody-card.png",
-          alt: "Representative blueprint-style visual for the Fuel Custody and Reconciliation Platform"
-        }
-      : null;
+  const systemImage = projectImages[project.visual] ?? null;
 
   if (project.visual === "website" && websiteImage) {
     return (
       <figure className="my-4 overflow-hidden border border-line bg-surface-muted p-3">
-        <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase text-green">
+        <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
           {copy.title}
         </figcaption>
 
-        <div className="overflow-hidden border border-line bg-surface">
+        <div className="relative aspect-[16/10] overflow-hidden border border-line bg-surface">
           <Image
             src={websiteImage.src}
             alt={websiteImage.alt}
-            width={1400}
-            height={900}
-            className="h-auto w-full object-cover"
-            sizes="(min-width: 1024px) 33vw, 100vw"
+            fill
+            className="object-cover object-top transition duration-200 group-hover:scale-[1.015] group-focus-within:scale-[1.015]"
+            sizes="(min-width: 1280px) 31vw, (min-width: 768px) 46vw, 100vw"
           />
         </div>
       </figure>
     );
   }
 
-  if (fuelImage) {
+  if (systemImage) {
     return (
       <figure className="my-4 overflow-hidden border border-line bg-surface-muted p-3">
-        <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase text-green">
+        <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
           {copy.title}
         </figcaption>
 
         <div className="relative aspect-[16/10] overflow-hidden border border-line bg-surface">
           <Image
-            src={fuelImage.src}
-            alt={fuelImage.alt}
+            src={systemImage.src}
+            alt={systemImage.alt}
             fill
-            className="object-cover object-center transition duration-200 group-hover:scale-[1.015]"
+            className="object-cover transition duration-200 group-hover:scale-[1.015] group-focus-within:scale-[1.015]"
+            style={{
+              objectPosition: systemImage.position ?? "center"
+            }}
             sizes="(min-width: 1280px) 31vw, (min-width: 768px) 46vw, 100vw"
           />
         </div>
@@ -92,7 +129,7 @@ export function ProjectDiagram({ project, compact = false }: { project: Project;
 
   return (
     <figure className="my-4 border border-line bg-surface-muted p-3">
-      <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase text-green">
+      <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
         {copy.title}
       </figcaption>
 
@@ -119,7 +156,12 @@ export function ProjectDiagram({ project, compact = false }: { project: Project;
           </marker>
         </defs>
 
-        <path d="M42 74H718V286H42Z" fill="rgba(255,253,248,0.72)" stroke="var(--line)" />
+        <path
+          d="M42 74H718V286H42Z"
+          fill="rgba(255,253,248,0.72)"
+          stroke="var(--line)"
+        />
+
         <path
           d="M42 144H718M42 214H718M196 74V286M380 74V286M564 74V286"
           fill="none"
@@ -153,7 +195,12 @@ export function ProjectDiagram({ project, compact = false }: { project: Project;
                 {node}
               </text>
 
-              <circle cx={x + 112} cy={y + 56} r="4" fill="var(--green)" />
+              <circle
+                cx={x + 112}
+                cy={y + 56}
+                r="4"
+                fill="var(--green)"
+              />
 
               {index < copy.nodes.length - 1 ? (
                 <path
