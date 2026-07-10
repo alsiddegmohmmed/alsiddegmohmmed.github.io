@@ -18,8 +18,6 @@ export function SiteNav() {
         <Link className="inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink hover:text-green" href="/#work">Work</Link>
         <Link className="inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink hover:text-green" href="/#capabilities">Capabilities</Link>
         <Link className="inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink hover:text-green" href="/#experience">Experience</Link>
-        <Link className="inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink hover:text-green" href="/#contact">About</Link>
-        <Link className="inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink hover:text-green" href="/#work">Notes</Link>
         <Link className="inline-flex min-h-14 items-center gap-3 rounded border border-ink/70 bg-surface/60 px-6 font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink hover:bg-green-soft hover:text-green" href="/#contact">
           Contact <ArrowUpRight size={14} aria-hidden="true" />
         </Link>
