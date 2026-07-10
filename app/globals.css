@@ -214,6 +214,14 @@ svg {
 
 /* Svg hero section */
 
+.atlas-figure {
+  --atlas-pointer-x: 0;
+  --atlas-pointer-y: 0;
+
+  position: relative;
+  isolation: isolate;
+  contain: layout paint;
+}
 
 .hero-system-atlas {
   display: block;
@@ -221,18 +229,56 @@ svg {
   height: auto;
   overflow: visible;
   color: var(--ink);
-  shape-rendering: geometricPrecision;
   background: transparent;
-
+  shape-rendering: geometricPrecision;
 }
 
 .hero-system-atlas text {
   user-select: none;
 }
 
+.hero-system-atlas * {
+  vector-effect: non-scaling-stroke;
+}
+
+.atlas-parallax {
+  transform-box: view-box;
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 180ms ease-out;
+}
+
+.atlas-parallax-back {
+  transform: translate(
+    calc(var(--atlas-pointer-x) * 2px),
+    calc(var(--atlas-pointer-y) * 2px)
+  );
+}
+
+.atlas-parallax-orbits {
+  transform: translate(
+    calc(var(--atlas-pointer-x) * 4px),
+    calc(var(--atlas-pointer-y) * 4px)
+  );
+}
+
+.atlas-parallax-planes {
+  transform: translate(
+    calc(var(--atlas-pointer-x) * 5px),
+    calc(var(--atlas-pointer-y) * 5px)
+  );
+}
+
+.atlas-parallax-cube {
+  transform: translate(
+    calc(var(--atlas-pointer-x) * 7px),
+    calc(var(--atlas-pointer-y) * 7px)
+  );
+}
+
 .atlas-grid {
   opacity: 0;
-  animation: atlas-fade-in 900ms ease-out 80ms forwards;
+  animation: atlas-fade-in 700ms ease-out 60ms forwards;
 }
 
 .atlas-construction line,
@@ -252,36 +298,56 @@ svg {
   fill: none;
   stroke: #53706a;
   stroke-width: 1.15;
-  stroke-opacity: 0.34;
+  stroke-opacity: 0.3;
   stroke-dasharray: 5 7;
+}
+
+.atlas-layer-hit-area {
+  cursor: crosshair;
+  outline: none;
+  transition:
+    opacity 220ms ease,
+    filter 220ms ease;
+}
+
+.atlas-layer-hit-area:focus-visible .atlas-plane-line {
+  stroke: #1e5b88;
+  stroke-width: 2;
+  stroke-opacity: 1;
 }
 
 .atlas-plane {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: atlas-plane-rise 700ms cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
+  animation: atlas-plane-rise 680ms cubic-bezier(0.2, 0.75, 0.25, 1)
+    forwards;
+  transition:
+    opacity 220ms ease,
+    filter 220ms ease,
+    transform 220ms ease;
 }
 
 .atlas-plane-apps {
-  animation-delay: 160ms;
-}
-
-.atlas-plane-services {
   animation-delay: 260ms;
 }
 
+.atlas-plane-services {
+  animation-delay: 390ms;
+}
+
 .atlas-plane-data {
-  animation-delay: 360ms;
+  animation-delay: 520ms;
 }
 
 .atlas-plane-edge {
-  animation-delay: 460ms;
+  animation-delay: 650ms;
 }
 
 .atlas-plane-fill {
   fill: #fffdf8;
-  fill-opacity: 0.56;
+  fill-opacity: 0.5;
+  transition: fill-opacity 220ms ease;
 }
 
 .atlas-plane-line,
@@ -297,6 +363,10 @@ svg {
 .atlas-plane-line {
   stroke-width: 1.35;
   stroke-opacity: 0.7;
+  transition:
+    stroke 220ms ease,
+    stroke-opacity 220ms ease,
+    stroke-width 220ms ease;
 }
 
 .atlas-plane-grid {
@@ -321,6 +391,12 @@ svg {
   font-weight: 600;
 }
 
+.atlas-icon-node {
+  transition:
+    opacity 220ms ease,
+    filter 220ms ease;
+}
+
 .atlas-icon-node use {
   fill: none;
   stroke: #1e5b88;
@@ -329,12 +405,170 @@ svg {
   stroke-linejoin: round;
 }
 
+.atlas-app-node,
+.atlas-service-node,
+.atlas-data-node,
+.atlas-edge-node {
+  opacity: 0;
+  animation: atlas-node-arrive 420ms ease-out forwards;
+}
+
+.atlas-edge-node-1 {
+  animation-delay: 820ms;
+}
+
+.atlas-edge-node-2 {
+  animation-delay: 940ms;
+}
+
+.atlas-edge-node-3 {
+  animation-delay: 1060ms;
+}
+
+.atlas-data-node-1 {
+  animation-delay: 1780ms;
+}
+
+.atlas-data-node-2 {
+  animation-delay: 1910ms;
+}
+
+.atlas-service-node-1 {
+  animation-delay: 2580ms;
+}
+
+.atlas-service-node-2 {
+  animation-delay: 2710ms;
+}
+
+.atlas-service-node-3 {
+  animation-delay: 2840ms;
+}
+
+.atlas-app-node-1 {
+  animation-delay: 3190ms;
+}
+
+.atlas-app-node-2 {
+  animation-delay: 3320ms;
+}
+
+.atlas-app-node-3 {
+  animation-delay: 3450ms;
+}
+
+.atlas-icon-live-stroke,
+.atlas-workflow-branch {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: atlas-draw-line 700ms ease-out 3.25s forwards;
+}
+
+.atlas-tool-cell {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0.45;
+  animation: atlas-tool-cell-activate 420ms ease-out forwards;
+}
+
+.atlas-tool-cell-1 {
+  animation-delay: 3.2s;
+}
+
+.atlas-tool-cell-2 {
+  animation-delay: 3.32s;
+}
+
+.atlas-tool-cell-3 {
+  animation-delay: 3.44s;
+}
+
+.atlas-tool-cell-4 {
+  animation-delay: 3.56s;
+}
+
+.atlas-rule-filter {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: atlas-rule-activate 700ms ease-out 2.75s both;
+}
+
+.atlas-state-stack {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: atlas-state-settle 650ms ease-out 1.85s both;
+}
+
+.atlas-device-light {
+  fill: #1e5b88;
+  stroke: none;
+  opacity: 0.25;
+  animation: atlas-device-light 1.4s ease-in-out infinite;
+}
+
+.atlas-device-light-1 {
+  animation-delay: 900ms;
+}
+
+.atlas-device-light-2 {
+  animation-delay: 1.1s;
+}
+
+.atlas-gateway-lines {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: atlas-draw-line 600ms ease-out 1.05s forwards;
+}
+
+.atlas-sensor-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: atlas-sensor-ripple 4.8s ease-out infinite;
+}
+
+.atlas-sensor-wave-inner {
+  animation-delay: 1.1s;
+}
+
+.atlas-sensor-wave-outer {
+  animation-delay: 1.35s;
+}
+
 .atlas-data-paths path {
   fill: none;
   stroke: #1e5b88;
   stroke-width: 1.65;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.atlas-hidden-motion-path {
+  stroke: none !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.atlas-active-route {
+  fill: none;
+  stroke: #2874a6;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+
+.atlas-active-route-left {
+  animation:
+    atlas-route-activate 1.2s ease-out 1.15s forwards,
+    atlas-route-settle 500ms ease-out 2.35s forwards;
+}
+
+.atlas-active-route-right {
+  animation:
+    atlas-route-activate 1.1s ease-out 3.65s forwards,
+    atlas-route-settle 500ms ease-out 4.75s forwards;
 }
 
 .atlas-path-node {
@@ -368,28 +602,56 @@ svg {
   stroke: none;
 }
 
+.atlas-operator-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0.45;
+  animation: atlas-operator-activate 520ms ease-out forwards;
+}
+
+.atlas-operator-node-1 {
+  animation-delay: 4.65s;
+}
+
+.atlas-operator-node-2 {
+  animation-delay: 4.82s;
+}
+
+.atlas-operator-node-3 {
+  animation-delay: 4.99s;
+}
+
 .atlas-cube {
   opacity: 0;
-  animation: atlas-cube-enter 760ms cubic-bezier(0.2, 0.75, 0.25, 1) 440ms forwards;
+  animation: atlas-cube-enter 720ms cubic-bezier(0.2, 0.75, 0.25, 1)
+    700ms forwards;
 }
 
 .atlas-cube-layer {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center bottom;
-  animation: atlas-cube-layer 380ms ease-out forwards;
+  animation:
+    atlas-cube-layer-enter 380ms ease-out forwards,
+    atlas-cube-process 6.45s ease-in-out infinite;
 }
 
 .atlas-cube-layer-1 {
-  animation-delay: 510ms;
+  animation-delay:
+    780ms,
+    2.45s;
 }
 
 .atlas-cube-layer-2 {
-  animation-delay: 600ms;
+  animation-delay:
+    900ms,
+    2.62s;
 }
 
 .atlas-cube-layer-3 {
-  animation-delay: 690ms;
+  animation-delay:
+    1020ms,
+    2.79s;
 }
 
 .atlas-cube-layer path,
@@ -399,16 +661,42 @@ svg {
   stroke-linejoin: round;
 }
 
-.atlas-cube > ellipse:first-of-type {
+.atlas-cube > ellipse:not(.atlas-core-ambient):first-of-type {
   fill: #fffdf8;
   stroke: #384b47;
   stroke-width: 1.2;
+}
+
+.atlas-core-ambient {
+  opacity: 0;
+  animation: atlas-core-ambient 6.45s ease-out 2.72s infinite;
 }
 
 .atlas-copper-fill {
   fill: #a35e34;
   stroke: #8b4f2d;
   stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: atlas-core-process 6.45s ease-out 2.72s infinite;
+}
+
+.atlas-core-ring {
+  fill: none;
+  stroke: #a35e34;
+  stroke-width: 1.15;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: atlas-core-ring 6.45s ease-out 2.72s infinite;
+}
+
+.atlas-cube-scan {
+  fill: rgba(255, 253, 248, 0.35);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: atlas-cube-scan 6.45s ease-in-out 2.65s infinite;
 }
 
 .atlas-cube-outline {
@@ -422,6 +710,7 @@ svg {
   fill: #d6b687;
   stroke: #fffdf8;
   stroke-width: 0.7;
+  animation: atlas-port-flash 6.45s ease-out 2.8s infinite;
 }
 
 .atlas-connectors path {
@@ -433,6 +722,12 @@ svg {
   fill: #fffdf8;
   stroke: #476a63;
   stroke-width: 1;
+}
+
+.atlas-browser {
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
 }
 
 .atlas-browser rect,
@@ -464,6 +759,71 @@ svg {
   stroke-width: 1.6;
 }
 
+.atlas-browser-series,
+.atlas-browser-chart-line,
+.atlas-donut-progress,
+.atlas-small-ring-progress,
+.atlas-chart-check {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.atlas-browser-series {
+  animation: atlas-draw-line 760ms ease-out 3.45s forwards;
+}
+
+.atlas-donut-progress {
+  animation: atlas-draw-line 900ms ease-out 3.6s forwards;
+}
+
+.atlas-small-ring-progress {
+  animation: atlas-draw-line 850ms ease-out 3.7s forwards;
+}
+
+.atlas-browser-chart-line {
+  animation: atlas-draw-line 1.2s ease-out 3.55s forwards;
+}
+
+.atlas-browser-chart-point {
+  fill: #1e5b88 !important;
+  stroke: #fffdf8 !important;
+  opacity: 0;
+  animation: atlas-fade-in 120ms ease-out 3.7s forwards;
+}
+
+.atlas-chart-status {
+  opacity: 0.45;
+  animation: atlas-status-activate 420ms ease-out 4.7s forwards;
+}
+
+.atlas-chart-check {
+  animation: atlas-draw-line 420ms ease-out 4.78s forwards;
+}
+
+.atlas-bar {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  opacity: 0;
+  animation: atlas-bar-grow 620ms cubic-bezier(0.2, 0.75, 0.25, 1)
+    forwards;
+}
+
+.atlas-bar-1 {
+  animation-delay: 3.55s;
+}
+
+.atlas-bar-2 {
+  animation-delay: 3.68s;
+}
+
+.atlas-bar-3 {
+  animation-delay: 3.81s;
+}
+
+.atlas-bar-4 {
+  animation-delay: 3.94s;
+}
+
 .atlas-metric-lines path {
   stroke-width: 0.9;
   stroke-opacity: 0.3;
@@ -475,7 +835,7 @@ svg {
   stroke-width: 1.4;
   transform-box: fill-box;
   transform-origin: center;
-  animation: atlas-node-pulse 3.8s ease-in-out infinite;
+  animation: atlas-node-pulse 6.8s ease-in-out infinite;
 }
 
 .atlas-node-green {
@@ -497,19 +857,51 @@ svg {
 .atlas-node-b,
 .atlas-node-e,
 .atlas-node-h {
-  animation-delay: -1.2s;
+  animation-delay: -2.1s;
 }
 
 .atlas-node-c,
 .atlas-node-f,
 .atlas-node-i {
-  animation-delay: -2.4s;
+  animation-delay: -4.2s;
 }
 
 .atlas-node-d,
 .atlas-node-g,
 .atlas-node-j {
-  animation-delay: -3.1s;
+  animation-delay: -5.3s;
+}
+
+.atlas-data-packet {
+  opacity: 0;
+}
+
+.atlas-data-packet-core {
+  fill: #1e5b88;
+  stroke: #fffdf8;
+  stroke-width: 1.2;
+}
+
+.atlas-data-packet-ring {
+  fill: none;
+  stroke: #1e5b88;
+  stroke-width: 1;
+  opacity: 0.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: atlas-packet-ring 1.1s ease-out infinite;
+}
+
+.atlas-data-packet-input {
+  animation: atlas-packet-visible 9.15s linear infinite;
+}
+
+.atlas-data-packet-up {
+  animation: atlas-packet-up-visible 6.45s linear 2.72s infinite;
+}
+
+.atlas-data-packet-output {
+  animation: atlas-packet-output-visible 6.45s linear 3.65s infinite;
 }
 
 .atlas-moving-dot {
@@ -562,7 +954,8 @@ svg {
 .atlas-draw {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: atlas-draw-line 950ms cubic-bezier(0.2, 0.75, 0.25, 1) forwards;
+  animation: atlas-draw-line 950ms cubic-bezier(0.2, 0.75, 0.25, 1)
+    forwards;
 }
 
 .atlas-delay-1 {
@@ -585,6 +978,99 @@ svg {
   animation-delay: 680ms;
 }
 
+.atlas-inspection-card {
+  pointer-events: none;
+  opacity: 0;
+  animation: atlas-inspection-enter 220ms ease-out forwards;
+}
+
+.atlas-inspection-card > rect {
+  fill: rgba(255, 253, 248, 0.94);
+  stroke: #71817b;
+  stroke-width: 1;
+}
+
+.atlas-inspection-index {
+  fill: #1e5b88;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.atlas-inspection-title {
+  fill: #0b3d36;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.atlas-inspection-description {
+  margin: 0;
+  color: #3d4744;
+  font-family: var(--font-mono);
+  font-size: 8.8px;
+  line-height: 1.42;
+}
+
+.atlas-has-active-layer .atlas-layer-hit-area:not(:focus-visible) {
+  opacity: 0.38;
+}
+
+.atlas-figure[data-active-layer="applications"]
+  .atlas-layer-applications,
+.atlas-figure[data-active-layer="services"] .atlas-layer-services,
+.atlas-figure[data-active-layer="data"] .atlas-layer-data,
+.atlas-figure[data-active-layer="edge"] .atlas-layer-edge {
+  opacity: 1;
+  filter: saturate(1.1);
+}
+
+.atlas-figure[data-active-layer="applications"]
+  .atlas-layer-applications
+  .atlas-plane,
+.atlas-figure[data-active-layer="services"]
+  .atlas-layer-services
+  .atlas-plane,
+.atlas-figure[data-active-layer="data"] .atlas-layer-data .atlas-plane,
+.atlas-figure[data-active-layer="edge"] .atlas-layer-edge .atlas-plane {
+  transform: translateY(-3px);
+}
+
+.atlas-figure[data-active-layer="applications"]
+  .atlas-layer-applications
+  .atlas-plane-fill,
+.atlas-figure[data-active-layer="services"]
+  .atlas-layer-services
+  .atlas-plane-fill,
+.atlas-figure[data-active-layer="data"]
+  .atlas-layer-data
+  .atlas-plane-fill,
+.atlas-figure[data-active-layer="edge"]
+  .atlas-layer-edge
+  .atlas-plane-fill {
+  fill-opacity: 0.78;
+}
+
+.atlas-figure[data-active-layer="applications"]
+  .atlas-layer-applications
+  .atlas-plane-line,
+.atlas-figure[data-active-layer="services"]
+  .atlas-layer-services
+  .atlas-plane-line,
+.atlas-figure[data-active-layer="data"]
+  .atlas-layer-data
+  .atlas-plane-line,
+.atlas-figure[data-active-layer="edge"]
+  .atlas-layer-edge
+  .atlas-plane-line {
+  stroke: #1e5b88;
+  stroke-opacity: 1;
+  stroke-width: 1.8;
+}
+
 @keyframes atlas-fade-in {
   to {
     opacity: 1;
@@ -596,9 +1082,20 @@ svg {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes atlas-node-arrive {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
@@ -607,20 +1104,127 @@ svg {
     opacity: 0;
     transform: translateY(8px) scale(0.97);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
-@keyframes atlas-cube-layer {
+@keyframes atlas-cube-layer-enter {
   from {
     opacity: 0;
     transform: translateY(5px) scale(0.97);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes atlas-cube-process {
+  0%,
+  6%,
+  100% {
+    filter: brightness(1);
+    transform: translateY(0);
+  }
+
+  8% {
+    filter: brightness(1.3);
+    transform: translateY(-2px);
+  }
+
+  13% {
+    filter: brightness(1.08);
+    transform: translateY(0);
+  }
+}
+
+@keyframes atlas-core-process {
+  0%,
+  5%,
+  100% {
+    transform: scale(1);
+  }
+
+  8% {
+    transform: scale(1.42);
+  }
+
+  14% {
+    transform: scale(1);
+  }
+}
+
+@keyframes atlas-core-ring {
+  0%,
+  4%,
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  8% {
+    opacity: 0.75;
+  }
+
+  17% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+@keyframes atlas-core-ambient {
+  0%,
+  4%,
+  100% {
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  18% {
+    opacity: 0;
+  }
+}
+
+@keyframes atlas-cube-scan {
+  0%,
+  3%,
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  6% {
+    opacity: 0.5;
+  }
+
+  17% {
+    opacity: 0;
+    transform: translateY(-145px);
+  }
+}
+
+@keyframes atlas-port-flash {
+  0%,
+  7%,
+  100% {
+    opacity: 0.72;
+  }
+
+  9% {
+    opacity: 1;
+    filter: brightness(1.6);
+  }
+
+  14% {
+    opacity: 0.72;
+    filter: brightness(1);
   }
 }
 
@@ -630,16 +1234,238 @@ svg {
   }
 }
 
+@keyframes atlas-route-activate {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes atlas-route-settle {
+  to {
+    opacity: 0.28;
+  }
+}
+
 @keyframes atlas-node-pulse {
   0%,
-  72%,
+  84%,
   100% {
     transform: scale(1);
-    opacity: 0.88;
+    opacity: 0.84;
   }
-  80% {
-    transform: scale(1.32);
+
+  90% {
+    transform: scale(1.26);
     opacity: 1;
+  }
+}
+
+@keyframes atlas-device-light {
+  0%,
+  62%,
+  100% {
+    opacity: 0.25;
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  82% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes atlas-sensor-ripple {
+  0%,
+  76%,
+  100% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  82% {
+    opacity: 0.9;
+  }
+
+  94% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes atlas-state-settle {
+  from {
+    opacity: 0.4;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes atlas-rule-activate {
+  0% {
+    opacity: 0.45;
+    transform: scaleX(1.08);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(0.92);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes atlas-tool-cell-activate {
+  from {
+    opacity: 0.35;
+    transform: scale(0.72);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes atlas-operator-activate {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.82);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes atlas-bar-grow {
+  from {
+    opacity: 0.25;
+    transform: scaleY(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes atlas-status-activate {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 1;
+    stroke: #1e5b88;
+  }
+}
+
+@keyframes atlas-packet-ring {
+  from {
+    opacity: 0.65;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes atlas-packet-visible {
+  0%,
+  13% {
+    opacity: 0;
+  }
+
+  14%,
+  31% {
+    opacity: 1;
+  }
+
+  32%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes atlas-packet-up-visible {
+  0%,
+  1% {
+    opacity: 0;
+  }
+
+  2%,
+  19% {
+    opacity: 1;
+  }
+
+  20%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes atlas-packet-output-visible {
+  0%,
+  1% {
+    opacity: 0;
+  }
+
+  2%,
+  26% {
+    opacity: 1;
+  }
+
+  27%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes atlas-inspection-enter {
+  from {
+    opacity: 0;
+    transform: translate(835px, 726px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(835px, 720px);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .atlas-parallax-back,
+  .atlas-parallax-orbits,
+  .atlas-parallax-planes,
+  .atlas-parallax-cube {
+    transform: none;
+  }
+
+  .atlas-layer-hit-area {
+    cursor: default;
   }
 }
 
@@ -658,6 +1484,18 @@ svg {
   .atlas-side-heading {
     font-size: 11px;
   }
+
+  .atlas-inspection-card {
+    display: none;
+  }
+
+  .atlas-parallax {
+    transform: none !important;
+  }
+
+  .atlas-moving-dot {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -668,6 +1506,10 @@ svg {
     transition: none !important;
   }
 
+  .atlas-parallax {
+    transform: none !important;
+  }
+
   .hero-system-atlas .atlas-grid,
   .hero-system-atlas .atlas-plane,
   .hero-system-atlas .atlas-cube,
@@ -676,21 +1518,33 @@ svg {
   .hero-system-atlas .atlas-reveal-2,
   .hero-system-atlas .atlas-reveal-3,
   .hero-system-atlas .atlas-reveal-4,
-  .hero-system-atlas .atlas-reveal-5 {
+  .hero-system-atlas .atlas-reveal-5,
+  .hero-system-atlas .atlas-icon-node,
+  .hero-system-atlas .atlas-browser-chart-point,
+  .hero-system-atlas .atlas-bar,
+  .hero-system-atlas .atlas-operator-node {
     opacity: 1 !important;
-    transform: none !important;
   }
 
-  .hero-system-atlas .atlas-draw {
+  .hero-system-atlas .atlas-draw,
+  .hero-system-atlas .atlas-active-route,
+  .hero-system-atlas .atlas-icon-live-stroke,
+  .hero-system-atlas .atlas-workflow-branch,
+  .hero-system-atlas .atlas-browser-series,
+  .hero-system-atlas .atlas-browser-chart-line,
+  .hero-system-atlas .atlas-donut-progress,
+  .hero-system-atlas .atlas-small-ring-progress,
+  .hero-system-atlas .atlas-chart-check {
     stroke-dasharray: none !important;
     stroke-dashoffset: 0 !important;
   }
 
-  .hero-system-atlas .atlas-motion-only {
-    display: none;
+  .hero-system-atlas .atlas-motion-only,
+  .hero-system-atlas .atlas-core-ambient,
+  .hero-system-atlas .atlas-core-ring,
+  .hero-system-atlas .atlas-cube-scan {
+    display: none !important;
   }
 }
-
-
 
 /* End of svg hero section */

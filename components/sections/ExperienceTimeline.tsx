@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { contact, timeline } from "@/app/data";
 
 export function ExperienceTimeline() {
@@ -23,6 +23,10 @@ export function ExperienceTimeline() {
             <div>
               <h3 className="font-display text-2xl font-semibold leading-tight text-ink">{item.company}</h3>
               <strong className="mt-2 block text-green">{item.role}</strong>
+              <p className="mt-2 inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-[0.04em] text-muted">
+                <MapPin size={13} strokeWidth={1.8} aria-hidden="true" />
+                {item.location}
+              </p>
               <p className="mt-3 leading-7 text-muted">{item.text}</p>
             </div>
           </article>

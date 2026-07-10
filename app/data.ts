@@ -269,30 +269,35 @@ export const timeline = [
     period: "Jul 2025 — Feb 2026",
     company: "Primus Trading & Investment",
     role: "Software Engineer",
+    location: "Dammam, Saudi Arabia",
     text: "Worked on enterprise software across fuel operations, cash-management infrastructure, healthcare systems, and public company web presence."
   },
   {
     period: "Jan 2025 — Jun 2025",
     company: "Inseejam",
     role: "Full Stack Engineer",
+    location: "Riyadh, Saudi Arabia",
     text: "Contributed to IoT operations software for distributed physical assets, telemetry, scheduling, and real-time branch visibility."
   },
   {
     period: "Nov 2024 — Jun 2025",
     company: "AmnAds / Expand",
     role: "Full Stack Engineer",
+    location: "Riyadh, Saudi Arabia · Remote",
     text: "Delivered responsive landing pages and dashboard interfaces using React, Next.js, TypeScript, Tailwind CSS, and Arabic/RTL-aware implementation."
   },
   {
     period: "May 2024 — Aug 2024",
     company: "Dataline",
     role: "Full Stack Engineer",
+    location: "Doha, Qatar",
     text: "Built full-stack web applications including admin dashboards and ecommerce platforms using React, Node.js, Next.js, TypeScript, and MongoDB."
   },
   {
     period: "2021 — 2024",
     company: "Freelance & Contract Projects",
     role: "Web Developer",
+    location: "Saudi Arabia · Sudan · Remote",
     text: "Delivered websites and client-facing applications for companies across Saudi Arabia, Sudan, Qatar, and remote engagements."
   }
 ];
