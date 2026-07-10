@@ -55,10 +55,12 @@ const projectImages: Partial<Record<Project["visual"], ProjectImage>> = {
 
 export function ProjectDiagram({
   project,
-  compact = false
+  compact = false,
+  featured = false
 }: {
   project: Project;
   compact?: boolean;
+  featured?: boolean;
 }) {
   const copy = diagramCopy[project.visual];
   const title = `${copy.title} for ${project.title}`;
@@ -80,32 +82,40 @@ export function ProjectDiagram({
 
   if (project.visual === "website" && websiteImage) {
     return (
-      <figure className="my-4 overflow-hidden border border-line bg-surface-muted p-3">
-        <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
-          {copy.title}
+      <figure className={`${featured ? "m-0 p-4 md:p-5" : "my-4 p-3"} overflow-hidden border border-line bg-surface-muted`}>
+        <figcaption className="mb-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
+          <span>{featured ? "Figure 01 — Public project evidence" : copy.title}</span>
+          {featured ? <span className="text-muted">Live website capture</span> : null}
         </figcaption>
 
-        <div className="relative aspect-[16/10] overflow-hidden border border-line bg-surface">
+        <div className={`relative overflow-hidden border border-line bg-surface ${featured ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
           <Image
             src={websiteImage.src}
             alt={websiteImage.alt}
             fill
             className="object-cover object-top transition duration-200 group-hover:scale-[1.015] group-focus-within:scale-[1.015]"
-            sizes="(min-width: 1280px) 31vw, (min-width: 768px) 46vw, 100vw"
+            sizes={featured ? "(min-width: 1280px) 1120px, 94vw" : "(min-width: 1280px) 31vw, (min-width: 768px) 46vw, 100vw"}
           />
         </div>
+
+        {featured ? (
+          <p className="mb-0 mt-3 font-mono text-[11px] leading-5 text-muted">
+            Publicly verifiable project screen. Open the live website for the current production experience.
+          </p>
+        ) : null}
       </figure>
     );
   }
 
   if (systemImage) {
     return (
-      <figure className="my-4 overflow-hidden border border-line bg-surface-muted p-3">
-        <figcaption className="mb-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
-          {copy.title}
+      <figure className={`${featured ? "m-0 p-4 md:p-5" : "my-4 p-3"} overflow-hidden border border-line bg-surface-muted`}>
+        <figcaption className="mb-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
+          <span>{featured ? "Figure 01 — Representative project artifact" : copy.title}</span>
+          {featured ? <span className="text-muted">Not a production screenshot</span> : null}
         </figcaption>
 
-        <div className="relative aspect-[16/10] overflow-hidden border border-line bg-surface">
+        <div className={`relative overflow-hidden border border-line bg-surface ${featured ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
           <Image
             src={systemImage.src}
             alt={systemImage.alt}
@@ -114,7 +124,7 @@ export function ProjectDiagram({
             style={{
               objectPosition: systemImage.position ?? "center"
             }}
-            sizes="(min-width: 1280px) 31vw, (min-width: 768px) 46vw, 100vw"
+            sizes={featured ? "(min-width: 1280px) 1120px, 94vw" : "(min-width: 1280px) 31vw, (min-width: 768px) 46vw, 100vw"}
           />
         </div>
 

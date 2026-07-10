@@ -5,7 +5,7 @@ import { HeroSystemDiagram } from "@/components/hero/HeroSystemDiagram";
 export function Hero() {
   return (
     <section
-      className="grid min-h-[calc(100vh-108px)] grid-cols-1 items-center gap-12 overflow-visible px-6 py-14 scroll-mt-28 md:px-10 lg:grid-cols-[minmax(440px,590px)_minmax(720px,1fr)] lg:gap-[clamp(56px,5vw,96px)] lg:px-0 lg:py-0 lg:pl-[clamp(64px,5vw,88px)] lg:pr-[clamp(32px,4vw,56px)]"
+      className="grid min-h-[calc(100vh-108px)] grid-cols-1 items-center gap-12 overflow-hidden px-6 py-14 scroll-mt-28 md:px-10 lg:grid-cols-[minmax(350px,0.9fr)_minmax(0,1.1fr)] lg:gap-[clamp(40px,4vw,72px)] lg:px-0 lg:py-0 lg:pl-[clamp(48px,4vw,72px)] lg:pr-[clamp(28px,3vw,48px)] xl:grid-cols-[minmax(430px,590px)_minmax(0,1fr)]"
       aria-labelledby="hero-title"
     >
       <div className="max-w-[590px] justify-self-start">

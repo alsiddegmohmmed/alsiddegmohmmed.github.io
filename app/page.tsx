@@ -10,7 +10,7 @@ import { ExperienceTimeline } from "@/components/sections/ExperienceTimeline";
 
 export default function Home() {
   return (
-    <main id="top" className="overflow-visible">
+    <main id="top" className="overflow-x-clip">
       <SiteNav />
       <SideIndex />
       <div className="overflow-visible lg:pl-[230px]">

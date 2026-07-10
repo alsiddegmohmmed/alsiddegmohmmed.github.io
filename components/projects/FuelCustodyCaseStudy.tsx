@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, LockKeyhole } from "lucide-react";
+import { ArrowLeft, LockKeyhole } from "lucide-react";
 import type { Project } from "@/app/data";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteNav } from "@/components/layout/SiteNav";
@@ -9,6 +9,7 @@ import { FuelMovementLifecycle } from "@/components/projects/fuel-custody/FuelMo
 import { OfflineFirstAuthorizationDiagram } from "@/components/projects/fuel-custody/OfflineFirstAuthorizationDiagram";
 import { ReconciliationLogicDiagram } from "@/components/projects/fuel-custody/ReconciliationLogicDiagram";
 import { DiagramShell, Tag } from "@/components/projects/fuel-custody/shared";
+import { ProjectNavigation } from "@/components/projects/ProjectNavigation";
 
 type FuelCustodyCaseStudyProps = {
   project: Project;
@@ -187,30 +188,7 @@ export function FuelCustodyCaseStudy({ project, previous, next }: FuelCustodyCas
           </p>
         </section>
 
-        <nav className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-2" aria-label="Adjacent project case studies">
-          {previous ? (
-            <Link className="grid min-h-24 content-center gap-1 border border-line bg-surface p-5" href={`/projects/${previous.slug}`}>
-              <ArrowLeft size={16} aria-hidden="true" />
-              <span className="font-mono text-[11px] font-extrabold uppercase text-muted">Previous</span>
-              <strong className="text-ink">{previous.title}</strong>
-            </Link>
-          ) : (
-            <span />
-          )}
-
-          {next ? (
-            <Link
-              className="grid min-h-24 justify-items-end content-center gap-1 border border-line bg-surface p-5 text-right"
-              href={`/projects/${next.slug}`}
-            >
-              <span className="font-mono text-[11px] font-extrabold uppercase text-muted">Next</span>
-              <strong className="text-ink">{next.title}</strong>
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          ) : (
-            <span />
-          )}
-        </nav>
+        <ProjectNavigation previous={previous} next={next} />
       </article>
 
       <SiteFooter />

@@ -7,6 +7,7 @@ export type Project = {
   category: string;
   liveUrl?: string;
   repoUrl?: string;
+  cardSummary: string;
   summary: string;
   problem: string;
   role: string;
@@ -34,6 +35,8 @@ export const projects: Project[] = [
     status: "Public",
     category: "Public Website · Frontend Engineering",
     liveUrl: "https://tryexpand.com/",
+    cardSummary:
+      "A bilingual, responsive public experience for a Saudi advertising platform, built with reusable Next.js components.",
     summary:
       "A public-facing website and platform experience for AmnAds / Expand, focused on bilingual presentation, responsive implementation, and polished frontend delivery.",
     problem:
@@ -68,6 +71,8 @@ export const projects: Project[] = [
     status: "Public",
     category: "Public Website · Corporate Frontend",
     liveUrl: "https://primus-tra.com/",
+    cardSummary:
+      "A responsive corporate website translating a multi-domain technology company into a clear public presence.",
     summary:
       "A corporate website presenting Primus as a technology company delivering software solutions across multiple operational domains.",
     problem:
@@ -101,6 +106,8 @@ export const projects: Project[] = [
     order: "03",
     status: "Confidential",
     category: "Fuel Operations · IoT · Reconciliation",
+    cardSummary:
+      "A full-stack operational platform for tracing, authorizing, and reconciling fuel movement across field infrastructure.",
     summary:
       "A full-stack operational platform designed to trace, reconcile, and audit fuel movement across stations, tanks, pumps, vehicles, and edge devices.",
     problem:
@@ -134,6 +141,8 @@ export const projects: Project[] = [
     order: "04",
     status: "Confidential",
     category: "IoT · Telemetry · Operational Control",
+    cardSummary:
+      "A real-time IoT platform for telemetry, scheduling, device health, and remote operations across distributed branches.",
     summary:
       "An IoT operations platform for monitoring distributed devices, tracking telemetry, automating schedules, and supporting remote control across multiple physical locations.",
     problem:
@@ -167,6 +176,8 @@ export const projects: Project[] = [
     order: "05",
     status: "Confidential",
     category: "Healthcare · RBAC · Workflow Systems",
+    cardSummary:
+      "A role-based platform connecting registration, clinical, pharmacy, billing, and administrative workflows.",
     summary:
       "A hospital operations platform supporting patient registration, clinical queues, doctors, nurses, pharmacy, billing, and administrative workflows.",
     problem:
@@ -200,6 +211,8 @@ export const projects: Project[] = [
     order: "06",
     status: "Confidential",
     category: "Fintech · Edge Computing · Real-Time Systems",
+    cardSummary:
+      "An offline-first edge-to-cloud system linking POS, cash deposit machines, cloud events, and live operations.",
     summary:
       "A real-time cash-management system connecting POS terminals, cash deposit machines, edge gateways, AWS services, and management dashboards.",
     problem:
