@@ -243,24 +243,24 @@ export const projects: Project[] = [
 
 export const capabilities = [
   {
-    title: "System Architecture",
-    text: "Designing clear boundaries across frontend, backend, data, integrations, and infrastructure.",
-    points: ["Domain modeling", "API boundaries", "Operational workflows"]
+    title: "System Design",
+    text: "Planning how application layers, services, databases, integrations, and infrastructure fit together.",
+    points: ["Data models", "API design", "System workflows"]
   },
   {
-    title: "Full-Stack Engineering",
-    text: "Building product interfaces and backend modules with maintainable, production-minded implementation.",
+    title: "Full-Stack Development",
+    text: "Building frontend interfaces, backend services, APIs, and database features within the same product.",
     points: ["React / Next.js", "Node.js / Python", "REST / WebSockets"]
   },
   {
-    title: "Real-Time & Edge Systems",
-    text: "Working with live data, offline-first requirements, device integrations, and event-driven flows.",
-    points: ["WebSockets", "Telemetry", "Offline buffering"]
+    title: "Data and Real-Time Systems",
+    text: "Working with relational databases, caching, live updates, device data, and offline synchronization.",
+    points: ["PostgreSQL", "Redis", "WebSockets"]
   },
   {
-    title: "Operational Software",
-    text: "Turning complex industry workflows into usable dashboards, reports, alerts, and role-based systems.",
-    points: ["RBAC", "Reports", "Auditability"]
+    title: "Internal and Operational Software",
+    text: "Building dashboards and systems for permissions, reporting, alerts, records, and day-to-day operations.",
+    points: ["Role-based access", "Reports", "Audit logs"]
   }
 ];
 
@@ -303,15 +303,25 @@ export const timeline = [
 ];
 
 export const techSnapshot = [
+  "JavaScript",
+  "TypeScript",
+  "Python",
+  // "Java",
+  // "C# / .NET",
+
   "React",
   "Next.js",
-  "TypeScript",
   "Node.js",
   "NestJS",
   "FastAPI",
   "Django",
+
   "PostgreSQL",
+  "MySQL",
+  "MongoDB",
+  "SQLite",
   "Redis",
+
   "AWS",
   "Docker",
   "WebSockets",

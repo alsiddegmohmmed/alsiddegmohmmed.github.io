@@ -9,7 +9,7 @@ export function Capabilities() {
       <div className="mb-8 max-w-3xl">
         <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">Capabilities</p>
         <h2 id="capabilities-title" className="font-display text-[clamp(2rem,4vw,3.35rem)] font-semibold leading-none text-ink">
-          Engineering across product, data, and operations.
+          Areas of work
         </h2>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -32,18 +32,27 @@ export function Capabilities() {
         })}
       </div>
       <div className="motion-panel mt-5 grid gap-6 border border-line bg-green-soft p-6 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
-        <div>
-          <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">Tech Snapshot</p>
-          <h3 className="font-display text-3xl font-semibold leading-tight text-ink">Tools used to ship production systems.</h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {techSnapshot.map((tech) => (
-            <span className="motion-chip inline-flex min-h-7 items-center rounded-full border border-line bg-surface px-3 font-mono text-[11px] font-extrabold text-muted" key={tech}>
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
+  <div>
+    <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">
+      Technologies
+    </p>
+
+    <h3 className="font-display text-3xl font-semibold leading-tight text-ink">
+      Tools I have worked with
+    </h3>
+  </div>
+
+  <div className="flex flex-wrap gap-2">
+    {techSnapshot.map((tech) => (
+      <span
+        className="motion-chip inline-flex min-h-7 items-center rounded-full border border-line bg-surface px-3 font-mono text-[11px] font-extrabold text-muted"
+        key={tech}
+      >
+        {tech}
+      </span>
+    ))}
+  </div>
+</div>
     </section>
   );
 }
