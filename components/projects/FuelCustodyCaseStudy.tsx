@@ -29,9 +29,10 @@ export function FuelCustodyCaseStudy({ project, previous, next }: FuelCustodyCas
         <header className="border-b border-line pb-10">
           <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">03 / Confidential System</p>
 
-          <h1 className="max-w-[860px] font-display text-[clamp(3.4rem,8vw,7rem)] font-semibold leading-[0.88] tracking-[-0.04em] text-ink">
-            Fuel Custody 
-            &amp; <br /> Reconciliation <br />
+          <h1 className="max-w-[860px] font-display text-[clamp(2.35rem,12vw,3.4rem)] font-semibold leading-[0.92] tracking-[-0.035em] text-ink sm:text-[clamp(3.4rem,8vw,7rem)] sm:leading-[0.88] sm:tracking-[-0.04em]">
+            Fuel Custody &amp;{" "}
+            <br className="hidden sm:block" /> Reconciliation{" "}
+            <br className="hidden sm:block" />
             Platform
           </h1>
 
@@ -79,7 +80,7 @@ export function FuelCustodyCaseStudy({ project, previous, next }: FuelCustodyCas
         </section>
 
         <div className="mt-10 grid gap-8">
-          <section className="grid gap-6 border border-line bg-surface/60 p-5 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)] lg:p-7">
+          <section className="grid min-w-0 gap-6 border border-line bg-surface/60 p-5 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)] lg:p-7">
             <div>
               <p className="mb-3 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">02 / Domain Flow</p>
               <h2 className="font-display text-4xl font-semibold leading-tight text-ink">Fuel movement lifecycle</h2>
@@ -99,7 +100,7 @@ export function FuelCustodyCaseStudy({ project, previous, next }: FuelCustodyCas
             </DiagramShell>
           </section>
 
-          <section className="border border-line bg-surface/60 p-5 lg:p-7">
+          <section className="min-w-0 border border-line bg-surface/60 p-5 lg:p-7">
             <div className="mb-6 max-w-4xl">
               <p className="mb-3 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">03 / Rules Engine</p>
               <h2 className="font-display text-4xl font-semibold leading-tight text-ink">Reconciliation logic</h2>
@@ -119,7 +120,7 @@ export function FuelCustodyCaseStudy({ project, previous, next }: FuelCustodyCas
             </DiagramShell>
           </section>
 
-          <section className="grid gap-6 border border-line bg-surface/60 p-5 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)] lg:p-7">
+          <section className="grid min-w-0 gap-6 border border-line bg-surface/60 p-5 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,1fr)] lg:p-7">
             <div>
               <p className="mb-3 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">04 / Reliability Model</p>
               <h2 className="font-display text-4xl font-semibold leading-tight text-ink">Offline-first authorization</h2>

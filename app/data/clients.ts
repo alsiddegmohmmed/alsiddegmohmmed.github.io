@@ -21,8 +21,8 @@ export type ClientLogo = {
       src: "/assets/clients/dataline.png"
     },
     {
-      name: "Inseejam",
-      src: "/assets/clients/inseejam.png"
+      name: "Insejam",
+      src: "/assets/clients/insejam.png"
     },
     {
       name: "Primus Trading & Investment",

@@ -15,7 +15,7 @@ export type Project = {
   architecture: string[];
   impact: string[];
   stack: string[];
-  visual: "website" | "fuel" | "iot" | "hospital" | "cash";
+  visual: "website" | "fuel" | "iot" | "hospital" | "cash" | "affiliate";
 };
 
 export const contact = {
@@ -30,38 +30,56 @@ export const projects: Project[] = [
   {
     slug: "expand-amnads",
     title: "Expand / AmnAds",
-    subtitle: "Public marketing and advertising platform website",
+    subtitle:
+      "Affiliate marketing platform with public web experiences and role-based operational dashboards",
     order: "01",
     status: "Public",
-    category: "Public Website · Frontend Engineering",
+    category: "Affiliate Marketing · Frontend Engineering · RBAC",
     liveUrl: "https://tryexpand.com/",
     cardSummary:
-      "A bilingual, responsive public experience for a Saudi advertising platform, built with reusable Next.js components.",
+      "A frontend platform spanning a bilingual public website and private role-based dashboards for affiliate marketing operations.",
     summary:
-      "A public-facing website and platform experience for AmnAds / Expand, focused on bilingual presentation, responsive implementation, and polished frontend delivery.",
+      "An affiliate marketing platform combining a bilingual public website with private dashboards used by staff, clients, brand teams, and other platform users. The work involved building reusable frontend systems for multiple roles, workflows, and permission levels.",
     problem:
-      "The product needed a clean public interface that could communicate value quickly, support Arabic and English content, and remain fast and responsive across devices.",
+      "The platform needed to serve several types of users within the same product while keeping their permissions, data visibility, navigation, and workflows clearly separated. The frontend also had to support complex operational interfaces, API-driven data, Arabic and English content, and responsive behavior across both public and authenticated experiences.",
     role:
-      "Frontend and full-stack engineer working on client-facing pages, reusable frontend implementation, responsiveness, and API-connected flows where required.",
+      "Frontend Engineer responsible for developing the public website and contributing to the private platform dashboards. I built reusable interfaces, role-aware application flows, API-connected features, state-management logic, and responsive layouts across multiple frontend applications.",
     contribution: [
-      "Translated product and campaign requirements into responsive web interfaces.",
-      "Implemented reusable React / Next.js components with TypeScript and Tailwind CSS.",
-      "Improved layout behavior, cross-browser consistency, and Arabic/English presentation quality.",
-      "Connected frontend flows to backend/API services where the product required dynamic behavior."
+      "Built and maintained public-facing pages and authenticated dashboard interfaces using React, Next.js, and TypeScript.",
+      "Implemented role-based frontend experiences for staff, clients, brand teams, and other platform users with different permissions, navigation, actions, and data visibility.",
+      "Developed reusable components for forms, tables, filters, dashboard layouts, and recurring platform workflows using Material UI and Tailwind CSS.",
+      "Managed server and application state using React Query and Redux while integrating frontend workflows with backend APIs.",
+      "Supported bilingual Arabic and English experiences, including RTL-aware layouts and responsive behavior across desktop and mobile interfaces.",
+      "Worked within a complex affiliate-marketing product where campaigns, users, teams, and internal operations were represented through different dashboard experiences."
     ],
     architecture: [
-      "Public marketing layer for acquisition and product communication.",
-      "Reusable component structure for sections, content blocks, and responsive layouts.",
-      "RTL-aware interface foundations for Arabic-first usage.",
-      "Frontend integration points prepared for backend and platform workflows."
+      "Public layer: bilingual marketing pages communicating the platform, services, and value proposition.",
+      "Application layer: authenticated dashboards serving staff, clients, brand teams, and other platform roles.",
+      "Access layer: protected routes, role-based navigation, permission-aware actions, and restricted data visibility.",
+      "Interface layer: reusable forms, tables, filters, layouts, and shared components used across multiple product areas.",
+      "State layer: React Query for server-state synchronization and Redux for shared application state.",
+      "Integration layer: API-connected workflows handling platform data, user actions, and dashboard operations."
     ],
     impact: [
-      "Public, shareable proof of frontend execution quality.",
-      "Stronger client-facing presentation for a Saudi-market advertising product.",
-      "Demonstrates responsive delivery, visual discipline, and production-minded implementation."
+      "Delivered frontend work across both the public company presence and the private operational product.",
+      "Supported a multi-role platform rather than a single-purpose marketing website.",
+      "Demonstrates experience building permission-aware dashboards, reusable frontend architecture, and API-driven business workflows.",
+      "Shows the ability to work on complex commercial software while respecting confidentiality around private screens and proprietary operations."
     ],
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "RTL / Arabic", "API Integration"],
-    visual: "website"
+    stack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Material UI",
+      "Tailwind CSS",
+      "React Query",
+      "Redux",
+      "React Hooks",
+      "REST APIs",
+      "Role-Based Access",
+      "RTL / Arabic"
+    ],
+visual: "affiliate"
   },
   {
     slug: "primus-website",
@@ -274,15 +292,15 @@ export const timeline = [
   },
   {
     period: "Jan 2025 — Jun 2025",
-    company: "Inseejam",
-    role: "Full Stack Engineer",
+    company: "Insejam",
+    role: "Frontend Engineer",
     location: "Riyadh, Saudi Arabia",
     text: "Contributed to IoT operations software for distributed physical assets, telemetry, scheduling, and real-time branch visibility."
   },
   {
     period: "Nov 2024 — Jun 2025",
     company: "AmnAds / Expand",
-    role: "Full Stack Engineer",
+    role: "Frontend Engineer",
     location: "Riyadh, Saudi Arabia · Remote",
     text: "Delivered responsive landing pages and dashboard interfaces using React, Next.js, TypeScript, Tailwind CSS, and Arabic/RTL-aware implementation."
   },
@@ -296,7 +314,7 @@ export const timeline = [
   {
     period: "2021 — 2024",
     company: "Freelance & Contract Projects",
-    role: "Web Developer",
+    role: "Software Developer",
     location: "Saudi Arabia · Sudan · Remote",
     text: "Delivered websites and client-facing applications for companies across Saudi Arabia, Sudan, Qatar, and remote engagements."
   }

@@ -86,7 +86,7 @@ export function SideIndex() {
       aria-label="Casebook section index"
     >
       <span className="mb-9 block w-36 border-b border-line pb-5 font-mono text-xs font-extrabold uppercase tracking-[0.08em]">
-        Atlas Index
+         Index
       </span>
 
       <nav className="grid gap-7" aria-label="Homepage sections">

@@ -6,6 +6,15 @@ const diagramCopy: Record<Project["visual"], { title: string; nodes: string[] }>
     title: "Public website structure",
     nodes: ["Public pages", "Reusable sections", "Responsive UI", "Live website"]
   },
+  affiliate: {
+    title: "Affiliate platform structure",
+    nodes: [
+      "Public website",
+      "Authentication",
+      "Role-based dashboards",
+      "Platform workflows"
+    ]
+  },
   fuel: {
     title: "Confidential system visual",
     nodes: ["Field devices", "Ingestion", "Reconciliation", "Reports"]
@@ -66,47 +75,65 @@ export function ProjectDiagram({
   const title = `${copy.title} for ${project.title}`;
 
   const websiteImage =
-    project.slug === "expand-amnads"
+  project.slug === "expand-amnads"
+    ? {
+        src: "/assets/expand.png",
+        alt: "Expand / AmnAds public website screenshot"
+      }
+    : project.slug === "primus-website"
       ? {
-          src: "/assets/expand.png",
-          alt: "Expand / AmnAds public website screenshot"
+          src: "/assets/primus.png",
+          alt: "Primus Trading & Investment public website screenshot"
         }
-      : project.slug === "primus-website"
-        ? {
-            src: "/assets/primus.png",
-            alt: "Primus Trading & Investment public website screenshot"
-          }
-        : null;
+      : null;
 
-  const systemImage = projectImages[project.visual] ?? null;
+const systemImage = projectImages[project.visual] ?? null;
 
-  if (project.visual === "website" && websiteImage) {
-    return (
-      <figure className={`${featured ? "m-0 p-4 md:p-5" : "my-4 p-3"} overflow-hidden border border-line bg-surface-muted`}>
-        <figcaption className="mb-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
-          <span>{featured ? "Figure 01 — Public project evidence" : copy.title}</span>
-          {featured ? <span className="text-muted">Live website capture</span> : null}
-        </figcaption>
-
-        <div className={`relative overflow-hidden border border-line bg-surface ${featured ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
-          <Image
-            src={websiteImage.src}
-            alt={websiteImage.alt}
-            fill
-            className="object-cover object-top transition duration-200 group-hover:scale-[1.015] group-focus-within:scale-[1.015]"
-            sizes={featured ? "(min-width: 1280px) 1120px, 94vw" : "(min-width: 1280px) 31vw, (min-width: 768px) 46vw, 100vw"}
-          />
-        </div>
+if (websiteImage) {
+  return (
+    <figure
+      className={`${
+        featured ? "m-0 p-4 md:p-5" : "my-4 p-3"
+      } overflow-hidden border border-line bg-surface-muted`}
+    >
+      <figcaption className="mb-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.05em] text-green">
+        <span>
+          {featured ? "Figure 01 — Public project evidence" : copy.title}
+        </span>
 
         {featured ? (
-          <p className="mb-0 mt-3 font-mono text-[11px] leading-5 text-muted">
-            Publicly verifiable project screen. Open the live website for the current production experience.
-          </p>
+          <span className="text-muted">Live website capture</span>
         ) : null}
-      </figure>
-    );
-  }
+      </figcaption>
 
+      <div
+        className={`relative overflow-hidden border border-line bg-surface ${
+          featured ? "aspect-[16/9]" : "aspect-[16/10]"
+        }`}
+      >
+        <Image
+          src={websiteImage.src}
+          alt={websiteImage.alt}
+          fill
+          className="object-cover object-top transition duration-200 group-hover:scale-[1.015] group-focus-within:scale-[1.015]"
+          sizes={
+            featured
+              ? "(min-width: 1280px) 1120px, 94vw"
+              : "(min-width: 1280px) 31vw, (min-width: 768px) 46vw, 100vw"
+          }
+        />
+      </div>
+
+      {featured ? (
+        <p className="mb-0 mt-3 font-mono text-[11px] leading-5 text-muted">
+          {project.visual === "affiliate"
+            ? "Public website capture from a broader affiliate marketing platform. Private dashboard screens and internal workflows are not displayed."
+            : "Publicly verifiable project screen. Open the live website for the current production experience."}
+        </p>
+      ) : null}
+    </figure>
+  );
+}
   if (systemImage) {
     return (
       <figure className={`${featured ? "m-0 p-4 md:p-5" : "my-4 p-3"} overflow-hidden border border-line bg-surface-muted`}>

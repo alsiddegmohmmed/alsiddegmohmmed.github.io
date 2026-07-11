@@ -41,7 +41,7 @@ export function CaseStudyPage({ project, previous, next }: CaseStudyPageProps) {
             {project.order} / {isConfidential ? "Confidential system" : "Public project"}
           </p>
 
-          <h1 className="max-w-[980px] font-display text-[clamp(3.25rem,7vw,6.8rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-ink">
+          <h1 className="max-w-[980px] font-display text-[clamp(2.6rem,13vw,3.25rem)] font-semibold leading-[0.94] tracking-[-0.035em] text-ink md:text-[clamp(3.25rem,7vw,6.8rem)] md:leading-[0.9] md:tracking-[-0.04em]">
             {project.title}
           </h1>
 

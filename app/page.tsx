@@ -17,20 +17,33 @@ export default function Home() {
       <div className="overflow-visible lg:pl-[230px]">
         <Hero />
         <Capabilities />
-        <section id="work" className="mx-auto w-[min(1180px,calc(100%_-_44px))] scroll-mt-28 border-t border-line py-20" aria-labelledby="work-title">
-          <div className="mb-8 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.55fr)] lg:items-end">
-            <div>
-              <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">Selected Work</p>
-              <h2 id="work-title" className="font-display text-[clamp(2rem,4vw,3.35rem)] font-semibold leading-none text-ink">
-                Public websites first. Systems depth next.
-              </h2>
-            </div>
-            <p className="leading-7 text-muted">
-              Confidential projects use representative diagrams and workflow maps instead of client screenshots.
-            </p>
-          </div>
-          <ProjectGrid projects={projects} />
-        </section>
+        <section
+  id="work"
+  className="mx-auto w-[min(1180px,calc(100%_-_44px))] scroll-mt-28 border-t border-line py-20"
+  aria-labelledby="work-title"
+>
+  <div className="mb-8 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.55fr)] lg:items-end">
+    <div>
+      <p className="mb-4 font-mono text-xs font-bold uppercase tracking-[0.08em] text-green">
+        Selected Work
+      </p>
+
+      <h2
+        id="work-title"
+        className="font-display text-[clamp(2rem,4vw,3.35rem)] font-semibold leading-none text-ink"
+      >
+        Selected software projects and engineering work.
+      </h2>
+    </div>
+
+    <p className="leading-7 text-muted">
+      Some projects are presented through system diagrams and workflow maps
+      where client details or product screenshots cannot be shared.
+    </p>
+  </div>
+
+  <ProjectGrid projects={projects} />
+</section>
 
         <ClientMarquee />
         <ExperienceTimeline />

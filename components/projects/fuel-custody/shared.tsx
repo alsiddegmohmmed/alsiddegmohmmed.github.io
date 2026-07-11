@@ -28,7 +28,7 @@ export function Tag({ children }: { children: ReactNode }) {
 
 export function DiagramShell({ label, title, caption, children, className = "" }: DiagramShellProps) {
   return (
-    <figure className={`relative border border-line bg-surface/85 p-4 md:p-5 ${className}`}>
+    <figure className={`relative m-0 min-w-0 border border-line bg-surface/85 p-4 md:p-5 ${className}`}>
       <figcaption className="mb-4 font-mono text-[11px] font-extrabold uppercase tracking-[0.08em] text-green">
         {label} — {title}
       </figcaption>

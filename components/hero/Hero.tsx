@@ -16,7 +16,7 @@ export function Hero() {
 
         <h1
           id="hero-title"
-          className="max-w-[590px] font-display text-[clamp(56px,3.33vw,64px)] font-semibold leading-[0.98] tracking-[-0.04em] text-ink"
+          className="max-w-[590px] font-display text-[clamp(2.75rem,14vw,3.5rem)] font-semibold leading-[0.98] tracking-[-0.035em] text-ink md:text-[clamp(56px,3.33vw,64px)] md:tracking-[-0.04em]"
         >
           <span className="block">I’m Siddeg Omer,</span>
           <span className="block">a full-stack</span>

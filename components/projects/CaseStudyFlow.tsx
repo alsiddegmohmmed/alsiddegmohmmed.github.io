@@ -1,11 +1,61 @@
 import type { Project } from "@/app/data";
 
 const flowNodes: Record<Project["visual"], readonly string[]> = {
-  website: ["Public pages", "Reusable sections", "Responsive UI", "Live website"],
-  fuel: ["Field devices", "Ingestion", "Reconciliation", "Reports"],
-  iot: ["Sites / branches", "Edge devices", "ThingsBoard", "APIs / streams", "Operations UI"],
-  hospital: ["Registration", "Clinical queue", "Lab / pharmacy", "Billing", "Admin / reports"],
-  cash: ["POS / CDM", "Edge gateway", "Local buffer", "Cloud events", "Live dashboard"]
+  website: [
+    "Public pages",
+    "Reusable sections",
+    "Responsive UI",
+    "Live website"
+  ],
+  affiliate: [
+    "Public website",
+    "Authentication",
+    "Role-based access",
+    "Operational dashboards",
+    "API-driven workflows"
+  ],
+  fuel: [
+    "Field devices",
+    "Ingestion",
+    "Reconciliation",
+    "Reports"
+  ],
+  iot: [
+    "Sites / branches",
+    "Edge devices",
+    "ThingsBoard",
+    "APIs / streams",
+    "Operations UI"
+  ],
+  hospital: [
+    "Registration",
+    "Clinical queue",
+    "Lab / pharmacy",
+    "Billing",
+    "Admin / reports"
+  ],
+  cash: [
+    "POS / CDM",
+    "Edge gateway",
+    "Local buffer",
+    "Cloud events",
+    "Live dashboard"
+  ]
+};
+
+const flowDescriptions: Record<Project["visual"], string> = {
+  website:
+    "Simplified to show how the public-facing implementation moves from content structure to production delivery.",
+  affiliate:
+    "Simplified to show how the public website connects to authenticated, role-based platform experiences without exposing private product screens.",
+  fuel:
+    "Generalized to communicate system context without exposing client-sensitive implementation details.",
+  iot:
+    "Generalized to communicate system context without exposing client-sensitive implementation details.",
+  hospital:
+    "Generalized to communicate system context without exposing client-sensitive implementation details.",
+  cash:
+    "Generalized to communicate system context without exposing client-sensitive implementation details."
 };
 
 export function CaseStudyFlow({ project }: { project: Project }) {
@@ -48,10 +98,8 @@ export function CaseStudyFlow({ project }: { project: Project }) {
       </ol>
 
       <p className="mb-0 mt-4 border-t border-line pt-3 font-mono text-[11px] leading-5 text-muted">
-        {project.status === "Confidential"
-          ? "Generalized to communicate system context without exposing client-sensitive implementation details."
-          : "Simplified to show how the public-facing implementation moves from content structure to production delivery."}
-      </p>
+  {flowDescriptions[project.visual]}
+</p>
     </figure>
   );
 }
