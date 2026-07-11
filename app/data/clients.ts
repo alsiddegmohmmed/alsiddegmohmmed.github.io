@@ -18,7 +18,7 @@ export type ClientLogo = {
     },
     {
       name: "Dataline",
-      src: "/assets/clients/dataline.png"
+      src: "/assets/clients/Dataline.png"
     },
     {
       name: "Insejam",
