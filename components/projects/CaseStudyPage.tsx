@@ -120,7 +120,7 @@ export function CaseStudyPage({ project, previous, next }: CaseStudyPageProps) {
               </h2>
             </div>
             <p className="m-0 leading-7 text-muted">
-              Concrete implementation areas, framed around work I can explain and defend in a technical interview.
+            The main areas I contributed to across the product and its supporting systems.
             </p>
           </div>
 
