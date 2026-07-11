@@ -7,6 +7,7 @@ import { ProjectGrid } from "@/components/projects/ProjectGrid";
 import { Capabilities } from "@/components/sections/Capabilities";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ExperienceTimeline } from "@/components/sections/ExperienceTimeline";
+import { ClientMarquee } from "@/components/sections/client-marquee/ClientMarquee";
 
 export default function Home() {
   return (
@@ -31,7 +32,7 @@ export default function Home() {
           <ProjectGrid projects={projects} />
         </section>
 
-
+        <ClientMarquee />
         <ExperienceTimeline />
         <ContactSection />
         <SiteFooter />

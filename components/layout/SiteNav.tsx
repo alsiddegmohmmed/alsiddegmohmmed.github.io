@@ -17,6 +17,7 @@ export function SiteNav() {
       <div className="flex flex-wrap items-center justify-end gap-[clamp(24px,3vw,58px)]">
         <Link className="nav-link inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink" href="/#work">Work</Link>
         <Link className="nav-link inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink" href="/#capabilities">Capabilities</Link>
+        <Link className="nav-link inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink" href="/#clients">Clients</Link>
         <Link className="nav-link inline-flex min-h-11 items-center font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink" href="/#experience">Experience</Link>
         <Link className="nav-contact group inline-flex min-h-14 items-center gap-3 rounded border border-ink/70 bg-surface/60 px-6 font-mono text-sm font-extrabold uppercase tracking-[0.08em] text-ink" href="/#contact">
           Contact <ArrowUpRight className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" size={14} aria-hidden="true" />
