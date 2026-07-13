@@ -62,7 +62,7 @@ export function Hero() {
 
           <div className="motion-panel border border-line bg-surface/70 p-4">
             <dt className="mb-1 font-mono text-[11px] font-extrabold uppercase text-muted">
-              Experience
+             Work Experience
             </dt>
             <dd className="m-0 font-extrabold text-ink">
               3+ years in software development
