@@ -65,7 +65,7 @@ export function Hero() {
              Work Experience
             </dt>
             <dd className="m-0 font-extrabold text-ink">
-              3+ years in software development
+              5+ years in software development
             </dd>
           </div>
         </dl>
