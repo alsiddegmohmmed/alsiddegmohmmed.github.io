@@ -40,6 +40,13 @@ const flowNodes: Record<Project["visual"], readonly string[]> = {
     "Local buffer",
     "Cloud events",
     "Live dashboard"
+  ],
+  ledgerops: [
+    "Payment request",
+    "Risk decision",
+    "Provider evidence",
+    "Atomic ledger effect",
+    "Reconciliation"
   ]
 };
 
@@ -55,7 +62,9 @@ const flowDescriptions: Record<Project["visual"], string> = {
   hospital:
     "Generalized to communicate system context without exposing client-sensitive implementation details.",
   cash:
-    "Generalized to communicate system context without exposing client-sensitive implementation details."
+    "Generalized to communicate system context without exposing client-sensitive implementation details.",
+  ledgerops:
+    "Simplified to show how a Payment moves from intake to one durable financial outcome and later settlement evidence."
 };
 
 export function CaseStudyFlow({ project }: { project: Project }) {

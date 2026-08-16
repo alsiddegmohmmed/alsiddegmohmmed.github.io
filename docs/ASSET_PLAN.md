@@ -180,6 +180,23 @@ Optional nodes:
 - Reports
 - Branch manager
 
+### LedgerOps
+
+Visual type:
+
+```txt
+Financial system boundary / transaction and recovery maps
+```
+
+Suggested diagrams:
+
+```txt
+Payment + Risk -> Provider delivery -> Ledger + Reversal -> Reconciliation + Cases
+```
+
+Use the public repository and verified release evidence as the source. Do not
+create fake application screenshots or claim public deployment.
+
 ## Diagram style rules
 
 Diagrams should look like technical figures inside a casebook.

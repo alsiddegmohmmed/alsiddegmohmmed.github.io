@@ -78,8 +78,9 @@ The homepage selected-work section must use this exact order:
 4. Inseejam IoT Operations Platform
 5. Hospital Operations Platform
 6. Real-Time Cash Management System
+7. LedgerOps
 
-Public projects should have live links. Confidential projects should use representative diagrams and workflow visuals.
+Public projects should have live or source links. Confidential projects should use representative diagrams and workflow visuals.
 
 ## 5. Technical direction
 

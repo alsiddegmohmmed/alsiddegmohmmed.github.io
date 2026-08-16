@@ -83,6 +83,7 @@ Use this exact order:
 4. Inseejam IoT Operations Platform
 5. Hospital Operations Platform
 6. Real-Time Cash Management System
+7. LedgerOps
 
 Card behavior:
 

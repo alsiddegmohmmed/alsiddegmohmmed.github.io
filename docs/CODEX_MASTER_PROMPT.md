@@ -54,6 +54,7 @@ Project order must be exactly:
 4. Inseejam IoT Operations Platform
 5. Hospital Operations Platform
 6. Real-Time Cash Management System
+7. LedgerOps
 
 Public projects:
 
@@ -116,7 +117,7 @@ Required deliverables:
 
 1. Clean component structure.
 2. Final homepage implementation.
-3. Dynamic project detail pages for all six projects.
+3. Dynamic project detail pages for all seven projects.
 4. Project visual/diagram components.
 5. Responsive desktop/tablet/mobile CSS.
 6. Motion and reduced-motion handling.

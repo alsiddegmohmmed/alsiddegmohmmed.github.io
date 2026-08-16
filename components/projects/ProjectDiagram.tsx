@@ -30,6 +30,10 @@ const diagramCopy: Record<Project["visual"], { title: string; nodes: string[] }>
   cash: {
     title: "Confidential cash system visual",
     nodes: ["POS / CDM", "Edge gateway", "Cloud events", "Live dashboard"]
+  },
+  ledgerops: {
+    title: "Financial operations system map",
+    nodes: ["Payment + Risk", "Provider delivery", "Ledger + Reversal", "Reconciliation"]
   }
 };
 
@@ -263,7 +267,9 @@ if (websiteImage) {
             fontSize="13"
             fontWeight="700"
           >
-            Representative architecture map. No client-sensitive screens or proprietary data.
+            {project.visual === "ledgerops"
+              ? "Representative architecture map. Verified project evidence is linked from the case study."
+              : "Representative architecture map. No client-sensitive screens or proprietary data."}
           </text>
         ) : null}
       </svg>

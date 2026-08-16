@@ -3,7 +3,7 @@
 ## Automated checks
 
 - TypeScript: `./node_modules/.bin/tsc --noEmit` passes.
-- Production build: `./node_modules/.bin/next build` completes and prerenders the homepage, icon, and all six project detail pages.
+- Production build: `./node_modules/.bin/next build` completes and prerenders the homepage, icon, and all seven project detail pages.
 - ESLint: `./node_modules/.bin/eslint .` passes.
 
 ## Browser smoke checks
@@ -20,7 +20,9 @@ Checked with local Chrome against `http://127.0.0.1:3000`.
   4. Inseejam IoT Operations Platform
   5. Hospital Operations Platform
   6. Real-Time Cash Management System
+  7. LedgerOps
 - Fuel Custody project detail page loads.
+- LedgerOps project detail page loads and links to its public repository.
 - Confidential note appears on confidential project page.
 - Mobile viewport at 390px has no horizontal overflow.
 - Desktop viewport at 1440px has no horizontal overflow.

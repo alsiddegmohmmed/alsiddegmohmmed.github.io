@@ -74,6 +74,7 @@ Homepage order must be:
 4. Inseejam IoT Operations Platform
 5. Hospital Operations Platform
 6. Real-Time Cash Management System
+7. LedgerOps
 
 ## Project naming
 
@@ -85,6 +86,7 @@ Use these names exactly unless the user later changes them:
 - Inseejam IoT Operations Platform
 - Hospital Operations Platform
 - Real-Time Cash Management System
+- LedgerOps
 
 Do not call the fuel system merely a dashboard.
 

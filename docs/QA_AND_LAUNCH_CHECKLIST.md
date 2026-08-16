@@ -28,6 +28,7 @@ Required routes:
 /projects/inseejam-iot-operations-platform
 /projects/hospital-operations-platform
 /projects/real-time-cash-management-system
+/projects/ledgerops
 ```
 
 Each route must:
@@ -47,7 +48,7 @@ Homepage must include:
 - hero copy;
 - hero SVG system diagram;
 - selected work section;
-- six projects in exact order;
+- seven projects in exact order;
 - capabilities section;
 - tech snapshot;
 - experience timeline;
@@ -62,6 +63,7 @@ Project order:
 4. Inseejam IoT Operations Platform
 5. Hospital Operations Platform
 6. Real-Time Cash Management System
+7. LedgerOps
 
 ## 4. Visual direction checklist
 

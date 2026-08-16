@@ -201,13 +201,15 @@ Required order:
 4. Inseejam IoT Operations Platform
 5. Hospital Operations Platform
 6. Real-Time Cash Management System
+7. LedgerOps
 
 Desktop layout:
 
-- 3x2 grid preferred;
+- 3-column grid preferred;
 - cards must align cleanly;
 - equal height or carefully balanced height;
 - card visual area should be consistent.
+- LedgerOps may span the final row to present the newest public engineering case study intentionally.
 
 Mobile layout:
 
@@ -546,6 +548,39 @@ Visual:
 
 - POS -> CDM -> edge gateway -> cloud event pipeline -> management dashboard.
 
+### 7.7 LedgerOps
+
+Status: Public
+
+Repository:
+
+```txt
+https://github.com/alsiddegmohmmed/LedgerOps
+```
+
+Positioning:
+
+```txt
+Production-style financial operations engineered for correctness under concurrency and failure.
+```
+
+System themes:
+
+- Tenant-wide Payment idempotency;
+- atomic Payment and Ledger completion;
+- Kafka at-least-once delivery with transactional outbox/inbox records;
+- durable Provider evidence and ambiguity recovery;
+- immutable double-entry accounting and compensating transactions;
+- settlement ingestion, deterministic Reconciliation, Cases, and controlled correction;
+- Keycloak authentication and PostgreSQL-owned authorization;
+- Operations Web, reporting, audit, and release evidence.
+
+Visual:
+
+- project card: Payment/Risk -> Provider delivery -> Ledger/Reversal -> Reconciliation;
+- project page: system boundary, atomic financial completion, and failure/recovery maps;
+- use only verified repository evidence and clearly identify the project as a simulation.
+
 ## 8. Design tokens
 
 Use these as direction tokens.
@@ -729,7 +764,7 @@ The work is accepted only if:
 - no personal photo appears;
 - the homepage follows the approved light editorial systems direction;
 - project order is correct;
-- all six project cards link to detail pages;
+- all seven project cards link to detail pages;
 - public projects have live links;
 - confidential projects have representative diagrams and notes;
 - content is truthful;
