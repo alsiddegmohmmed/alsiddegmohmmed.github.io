@@ -15,7 +15,7 @@ export type Project = {
   architecture: string[];
   impact: string[];
   stack: string[];
-  visual: "website" | "fuel" | "iot" | "hospital" | "cash" | "affiliate";
+  visual: "website" | "fuel" | "iot" | "hospital" | "cash" | "affiliate" | "ledgerops";
 };
 
 export const contact = {
@@ -256,6 +256,61 @@ visual: "affiliate"
     ],
     stack: ["Node.js", "AWS Lambda", "API Gateway", "Aurora PostgreSQL", "Redis", "EventBridge", "React", "React Native", "SQLite"],
     visual: "cash"
+  },
+  {
+    slug: "ledgerops",
+    title: "LedgerOps",
+    subtitle: "Financial operations engineered for correctness under concurrency and failure",
+    order: "07",
+    status: "Public",
+    category: "Financial Systems · Distributed Processing · Backend Engineering",
+    repoUrl: "https://github.com/alsiddegmohmmed/LedgerOps",
+    cardSummary:
+      "A production-style financial platform designed around one defensible outcome when requests race, messages repeat, providers time out, and settlement evidence disagrees.",
+    summary:
+      "A production-style, multi-tenant financial-operations platform connecting Payment intake, deterministic Risk, durable Provider processing, immutable double-entry accounting, full Reversal, settlement Reconciliation, controlled correction, and an operational web application.",
+    problem:
+      "The difficult part of a financial backend is not accepting a Payment request. It is preserving one explainable financial outcome when duplicate requests arrive concurrently, Kafka redelivers, a Provider response becomes ambiguous, a worker crashes, or settlement evidence conflicts with internal state.",
+    role:
+      "Independent portfolio project spanning product definition, domain and system architecture, backend and frontend implementation, test design, release planning, and technical documentation. I built the system as an evidence-driven study of financial correctness rather than a payment CRUD demo.",
+    contribution: [
+      "Designed Tenant-wide Payment idempotency with a canonical request fingerprint and PostgreSQL uniqueness so concurrent equivalent requests converge while conflicting reuse is rejected.",
+      "Defined one atomic Payment-to-Ledger completion boundary: Provider-confirmed success, the exact balanced posting, and the Payment state transition commit in one PostgreSQL transaction.",
+      "Implemented at-least-once Kafka processing with transactional outbox and inbox records, stable identities, fenced work, immutable Provider evidence, and idempotent business effects.",
+      "Modelled Provider timeouts as ambiguous outcomes with bounded status recovery and evidence-gated safe resubmission instead of automatic failure or blind retry.",
+      "Built full-payment Reversal, immutable settlement ingestion, deterministic Reconciliation, discrepancy Cases, stable settlement postings, and constrained compensating corrections.",
+      "Added Keycloak authentication, PostgreSQL-owned authorization, audited Tenant and Merchant operations, and a Next.js Operations Web application for investigation and control."
+    ],
+    architecture: [
+      "Core Platform: a Spring Boot modular monolith with explicit module and schema ownership enforced by Spring Modulith and architecture tests.",
+      "Financial boundary: Payment orchestrates completion while Ledger owns accounts, posting validation, immutable entries, and exact replay verification.",
+      "Delivery boundary: Kafka at-least-once transport surrounds transactional outbox/inbox records, durable Provider work, stable message identities, and fenced recovery.",
+      "External boundary: Provider HTTP, Keycloak administration, object storage, and merchant webhook delivery occur outside long database transactions.",
+      "Operations boundary: immutable settlement evidence becomes deterministic Reconciliation runs, discrepancies, Cases, posting instructions, and controlled corrections.",
+      "Read boundary: reporting, timeline, notification, and live-activity views are rebuildable projections rather than transactional truth."
+    ],
+    impact: [
+      "Recorded Release 0.3 verification completed 740 backend tests with 0 failures, errors, or skipped tests.",
+      "Verified clean Flyway V1–V45 installation and V14–V45 upgrade while preserving Tenant data.",
+      "Passed two bounded 100,000-record settlement-ingestion and Reconciliation tests.",
+      "Validated JSON Schema and HMAC fixtures, Provider compatibility, module boundaries, concurrency, rollback, replay, and migration behavior.",
+      "Completed 37 frontend tests and three Playwright runs covering 12 browser scenarios."
+    ],
+    stack: [
+      "Java 21",
+      "Spring Boot",
+      "Spring Modulith",
+      "PostgreSQL",
+      "Apache Kafka",
+      "Testcontainers",
+      "Keycloak",
+      "Redis",
+      "Spring Batch",
+      "MinIO",
+      "Next.js",
+      "OpenTelemetry"
+    ],
+    visual: "ledgerops"
   }
 ];
 
@@ -324,11 +379,12 @@ export const techSnapshot = [
   "JavaScript",
   "TypeScript",
   "Python",
-  // "Java",
+  "Java",
   // "C# / .NET",
 
   "React",
   "Next.js",
+  "Spring Boot",
   "Node.js",
   "NestJS",
   "FastAPI",
@@ -342,6 +398,8 @@ export const techSnapshot = [
 
   "AWS",
   "Docker",
+  "Apache Kafka",
+  "Testcontainers",
   "WebSockets",
   "ThingsBoard",
   "Tailwind CSS",

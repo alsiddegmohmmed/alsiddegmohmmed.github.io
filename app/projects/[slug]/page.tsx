@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { projects } from "@/app/data";
 import { CaseStudyPage } from "@/components/projects/CaseStudyPage";
 import { FuelCustodyCaseStudy } from "@/components/projects/FuelCustodyCaseStudy";
+import { LedgerOpsCaseStudy } from "@/components/projects/LedgerOpsCaseStudy";
 import { getAdjacentProjects, getProjectBySlug } from "@/lib/projects";
 import { projectMetadata } from "@/lib/seo";
 
@@ -37,6 +38,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (project.slug === "fuel-custody-reconciliation-platform") {
     return <FuelCustodyCaseStudy project={project} previous={previous} next={next} />;
+  }
+
+  if (project.slug === "ledgerops") {
+    return <LedgerOpsCaseStudy project={project} previous={previous} next={next} />;
   }
 
   return <CaseStudyPage project={project} previous={previous} next={next} />;

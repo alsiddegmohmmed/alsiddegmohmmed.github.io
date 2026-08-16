@@ -72,6 +72,7 @@ The selected work section must appear in this exact order:
 4. Inseejam IoT Operations Platform
 5. Hospital Operations Platform
 6. Real-Time Cash Management System
+7. LedgerOps
 
 Do not reorder based on perceived technical strength. Public websites come first because they are public proof.
 
@@ -132,5 +133,5 @@ After that, implement Phase 1 from `docs/FULL_IMPLEMENTATION_BRIEF.md`.
 Use this prompt in Codex:
 
 ```txt
-You are implementing the Operational Systems Atlas portfolio for Siddeg Omer. Read AGENTS.md, CODEX_START_HERE.md, docs/CODEX_MASTER_PROMPT.md, docs/FULL_IMPLEMENTATION_BRIEF.md, and all docs under /docs before editing. Follow the selected design direction exactly: light editorial systems casebook, no personal photo, no generic AI dark/neon portfolio, no fake screenshots, no invented metrics. Start by inspecting the current Next.js app, then implement the project structure, reusable components, dynamic project detail pages, responsive CSS, subtle SVG/CSS motion, accessibility, SEO, and QA checklist. Keep content truthful and data-driven from app/data.ts. Do not drift from the approved project order: Expand, Primus, Fuel Custody, Inseejam IoT, Hospital Operations, Real-Time Cash Management.
+You are implementing the Operational Systems Atlas portfolio for Siddeg Omer. Read AGENTS.md, CODEX_START_HERE.md, docs/CODEX_MASTER_PROMPT.md, docs/FULL_IMPLEMENTATION_BRIEF.md, and all docs under /docs before editing. Follow the selected design direction exactly: light editorial systems casebook, no personal photo, no generic AI dark/neon portfolio, no fake screenshots, no invented metrics. Start by inspecting the current Next.js app, then implement the project structure, reusable components, dynamic project detail pages, responsive CSS, subtle SVG/CSS motion, accessibility, SEO, and QA checklist. Keep content truthful and data-driven from app/data.ts. Do not drift from the approved project order: Expand, Primus, Fuel Custody, Inseejam IoT, Hospital Operations, Real-Time Cash Management, LedgerOps.
 ```

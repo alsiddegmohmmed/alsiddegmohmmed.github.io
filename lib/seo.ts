@@ -8,7 +8,9 @@ export function projectMetadata(project: Project): Metadata {
   const description = project.summary;
 
   return {
-    title,
+    title: {
+      absolute: title
+    },
     description,
     alternates: {
       canonical: `/projects/${project.slug}`
