@@ -266,9 +266,9 @@ visual: "affiliate"
     category: "Financial Systems · Distributed Processing · Backend Engineering",
     repoUrl: "https://github.com/alsiddegmohmmed/LedgerOps",
     cardSummary:
-      "A production-style financial platform designed around one defensible outcome when requests race, messages repeat, providers time out, and settlement evidence disagrees.",
+      "Follow one Payment from request to Provider evidence, balanced Ledger posting, Settlement, Reconciliation, and controlled Correction.",
     summary:
-      "A production-style, multi-tenant financial-operations platform connecting Payment intake, deterministic Risk, durable Provider processing, immutable double-entry accounting, full Reversal, settlement Reconciliation, controlled correction, and an operational web application.",
+      "Financial operations infrastructure built for the moments when payments stop being simple: a production-style simulation connecting Payment lifecycle management, Provider evidence, double-entry Ledgering, Settlement Reconciliation, Casework, audit, and operational tooling.",
     problem:
       "The difficult part of a financial backend is not accepting a Payment request. It is preserving one explainable financial outcome when duplicate requests arrive concurrently, Kafka redelivers, a Provider response becomes ambiguous, a worker crashes, or settlement evidence conflicts with internal state.",
     role:

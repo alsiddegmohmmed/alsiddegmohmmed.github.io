@@ -63,6 +63,11 @@ const projectImages: Partial<Record<Project["visual"], ProjectImage>> = {
     src: "/assets/cash-operations-card.png",
     alt: "Representative blueprint-style visual for the Real-Time Cash Management System",
     position: "center"
+  },
+  ledgerops: {
+    src: "/assets/ledgerops/ledgerops.png",
+    alt: "LedgerOps financial operations platform project preview",
+    position: "center"
   }
 };
 
