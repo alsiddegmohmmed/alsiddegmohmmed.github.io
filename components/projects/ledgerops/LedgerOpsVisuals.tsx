@@ -56,6 +56,105 @@ export function CorrectionFigure() {
 }
 
 export function ArchitectureFigure() {
-  const groups = [["TRANSACTION PROCESSING", "Tenancy · Merchant · Payment · Risk"], ["EXTERNAL PROCESSING", "Messaging · Provider"], ["FINANCIAL OPERATIONS", "Ledger · Reconciliation · Casework · Audit · Reporting"]] as const;
-  return <div className="grid gap-3" role="img" aria-label="Operations Web connects through identity to the LedgerOps modular Core, PostgreSQL, Kafka, Redis, MinIO, observability, and Provider Simulator"><FlowNode label="OPERATIONS WEB" detail="Next.js · React" tone="good" /><Arrow label="Identity / BFF · Keycloak · server-side sessions" /><div className="border border-line-strong bg-bg p-4"><p className="font-mono text-[10px] font-extrabold text-green">LEDGEROPS CORE</p><div className="mt-3 grid gap-2 md:grid-cols-3">{groups.map(([label, detail]) => <FlowNode label={label} detail={detail} key={label} />)}</div><p className="mb-0 mt-3 border border-line bg-surface p-3 text-center font-mono text-[10px] font-bold text-muted">POSTGRESQL / TRANSACTIONAL SOURCE OF TRUTH</p></div><div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">{["Kafka", "Redis", "MinIO", "Provider Simulator", "Prometheus · Grafana · OpenTelemetry"].map((item) => <div className="border border-line bg-surface p-3 text-center font-mono text-[10px] font-bold text-muted" key={item}>{item}</div>)}</div><p className="mb-0 border-l-4 border-blueprint bg-blueprint/5 p-4 text-sm leading-6 text-muted">Modules communicate through owned APIs and events; they do not bypass ownership by querying another module&apos;s tables.</p></div>;
+  const domains = [
+    {
+      label: "PAYMENT",
+      detail: "transaction lifecycle",
+      items: ["Tenancy", "Merchant", "Risk", "Attempts"]
+    },
+    {
+      label: "PROVIDER",
+      detail: "external processing",
+      items: ["Messaging", "Integration", "Evidence", "Recovery"]
+    },
+    {
+      label: "FINANCIAL OPS",
+      detail: "after the payment",
+      items: ["Settlement", "Reconciliation", "Casework", "Audit"]
+    }
+  ] as const;
+
+  const infrastructure = [
+    ["POSTGRESQL", "transactional records"],
+    ["KAFKA", "durable messages"],
+    ["MINIO", "settlement files"],
+    ["KEYCLOAK · REDIS", "identity · sessions"],
+    ["OBSERVABILITY", "traces · metrics · dashboards"],
+    ["PROVIDER SIMULATOR", "external boundary"]
+  ] as const;
+
+  return (
+    <div
+      className="mx-auto grid max-w-4xl justify-items-center"
+      role="img"
+      aria-label="The Operations Web connects to three LedgerOps Core domains for Payment, Provider, and Financial Operations. Those domains post to an immutable Ledger and use PostgreSQL, Kafka, MinIO, Keycloak, Redis, observability, and a Provider Simulator."
+    >
+      <div className="w-full max-w-xs border-l-4 border-green border-y border-r border-line bg-surface px-5 py-4 text-center">
+        <strong className="font-mono text-[11px] text-ink">OPERATIONS WEB</strong>
+        <span className="mt-1 block text-xs text-muted">Next.js · React · tenant-scoped workflows</span>
+      </div>
+
+      <div className="grid h-16 place-items-center text-center">
+        <span className="font-mono text-[9px] font-bold uppercase tracking-[0.06em] text-muted">Identity / BFF</span>
+        <span className="h-7 border-l border-blueprint" aria-hidden="true" />
+        <span className="-mt-2 text-blueprint" aria-hidden="true">▼</span>
+      </div>
+
+      <div className="w-full border border-line-strong bg-bg p-4 md:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-4">
+          <strong className="font-mono text-[11px] text-green">LEDGEROPS CORE</strong>
+          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.06em] text-muted">Spring Modulith</span>
+        </div>
+
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          {domains.map((domain, index) => (
+            <section className="border border-line bg-surface p-4" key={domain.label}>
+              <div className="flex items-start justify-between gap-3 border-b border-line pb-3">
+                <div>
+                  <strong className="block font-mono text-[10px] text-ink">{domain.label}</strong>
+                  <span className="mt-1 block text-[11px] text-muted">{domain.detail}</span>
+                </div>
+                <span className="font-mono text-[9px] font-extrabold text-copper">0{index + 1}</span>
+              </div>
+              <ul className="mb-0 mt-3 grid grid-cols-2 gap-px bg-line p-0">
+                {domain.items.map((item) => (
+                  <li className="list-none bg-bg px-2 py-2 text-center font-mono text-[9px] font-bold text-muted" key={item}>{item}</li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+
+        <div className="mx-auto grid h-12 w-px bg-line-strong" aria-hidden="true">
+          <span className="self-end text-blueprint">▼</span>
+        </div>
+
+        <div className="mx-auto max-w-xl border-l-4 border-green border-y border-r border-line-strong bg-green-soft px-5 py-4 text-center">
+          <strong className="font-mono text-[11px] text-ink">IMMUTABLE LEDGER</strong>
+          <span className="mt-1 block text-xs text-muted">balanced Journals · append-only Corrections · financial truth</span>
+        </div>
+      </div>
+
+      <div className="grid h-14 place-items-center" aria-hidden="true">
+        <span className="h-8 border-l border-blueprint" />
+        <span className="-mt-2 text-blueprint">▼</span>
+      </div>
+
+      <div className="w-full max-w-3xl">
+        <p className="mb-3 text-center font-mono text-[9px] font-extrabold uppercase tracking-[0.08em] text-muted">Platform and external boundaries</p>
+        <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
+          {infrastructure.map(([label, detail]) => (
+            <div className="border border-line bg-surface px-3 py-3 text-center" key={label}>
+              <strong className="block font-mono text-[9px] text-ink">{label}</strong>
+              <span className="mt-1 block text-[11px] text-muted">{detail}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p className="mb-0 mt-5 max-w-3xl border-l-4 border-blueprint bg-blueprint/5 p-4 text-sm leading-6 text-muted">
+        Each domain owns its data and publishes interfaces or durable events. The Ledger remains the shared financial truth without allowing modules to query one another&apos;s tables directly.
+      </p>
+    </div>
+  );
 }
