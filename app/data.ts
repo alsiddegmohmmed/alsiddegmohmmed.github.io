@@ -339,7 +339,7 @@ export const capabilities = [
 
 export const timeline = [
   {
-    period: "Jul 2025 — Jun 2026",
+    period: "Jul 2025 — May 2026",
     company: "Primus Trading & Investment",
     role: "Software Engineer",
     location: "Dammam, Saudi Arabia",
